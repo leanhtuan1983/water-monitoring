@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- css -->
+    <link type="text/css" rel="stylesheet" href="/stylesheets/style.css">
+    <link type="text/css" rel="stylesheet" href="/stylesheets/dashboard.css">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <!-- Boostrap 4 -->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- chartjs -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script> -->
+
+
+    <!-- amchartjs -->
+    <script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+    <script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
+
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+    <!-- DataTable -->
+
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css"> -->
+    <!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script> -->
+    <!-- momentjs and daterangepicker -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+    <!-- bootrap-select -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+
+    <!-- <script src="./styleSource.js"></script> -->
+    <script src="/javascripts/dashboard.js"></script>
+    <script src="/stylesheets/style.js"></script>
+
+    <!-- Custom CSS -->
+    <link href="css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/styleMenu.css">
+
+
+
+</head>
+
+<body>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#btn-show").click(function() {
+                $("#div1").toggle().css("display", block)
+            });
+        });
+    </script>
+
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+        <header class="topbar" data-navbarbg="skin5" style="position: fixed; width: 100%; top: -5px;">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                <div class="navbar-header" data-logobg="skin6">
+                    <a class="navbar-brand" href="/dashboard" style="order:2"></a>
+                    <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none" href="javascript:void(0)" style="text-decoration: none;"><i class="ti-menu ti-close"></i></a>
+                    <div class="btn-showad">
+                        <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav" id="btn-show">
+                            <span class="btn-icon-wrapper">
+                                <i class="fa fa-ellipsis-v fa-w-6"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div id="div1">
+                        <a class="nav-link dropdown-toggle navLink" data-toggle="dropdown" href="#" id="accountName" style="position: relative; top: -14px; float: right;">
+                            <%= name %>
+                                <i class="fas fa-sort-down"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right " style="min-height: 60px; position: absolute; right: 10px !important;">
+                            <a class="dropdown-item menuBarHover" href="/profile">
+                                <i class="fas fa-key"></i>
+                                <%= __('Change password')%>
+                            </a>
+                            <a class="dropdown-item menuBarHover" href="/logout">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <%= __('Logout')%>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5" style="padding-right: 20px;">
+                    <ul class="header-menu nav">
+                        <li class="nav-item">
+                            <a href="/dashboard" class="nav-link active">
+                                <i class="nav-link-icon fa fa-database"> </i>
+                                <%= __('STATISTIC')%>
+                            </a>
+                        </li>
+                        <li class="btn-group nav-item">
+                            <a href="/source_3/all" class="nav-link ">
+                                <i class="nav-link-icon fa fa-edit"></i>
+                                <%= __('DATA TRACKING')%>
+                            </a>
+                        </li>
+                        <li class="dropdown nav-item">
+                            <a href="/alert" class="nav-link">
+                                <i class="nav-link-icon fa fa-table"></i>
+                                <%= __('ALERTS')%>
+                            </a>
+                        </li>
+                        <li class="dropdown nav-item">
+                            <a href="/report" class="nav-link">
+                                <i class="nav-link-icon fa fa-paste"></i>
+                                <%= __('REPORT')%>
+                            </a>
+                        </li>
+                        <li class="dropdown nav-item">
+                            <a href="/admin" class="nav-link">
+                                <i class="nav-link-icon fas fa-user"></i> 
+                                <%= __('USER MANAGE')%>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav ms-auto d-flex align-items-center">
+                        <li>
+                            <a href="/change-lang/vi" class="m-2"><span class="flag-icon flag-icon-vn "></span></a>
+                            <a href="/change-lang/en" class="m-2"><span class="flag-icon flag-icon-us "></span></a>
+                        </li>
+                        <li>
+                            <a class="nav-link dropdown-toggle navLink" data-toggle="dropdown" href="#" id="accountName">
+                                <%= name %>
+                                <i class="fas fa-sort-down"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right " style="min-height: 60px; position: absolute; right: 10px !important;">
+                                <a class="dropdown-item menuBarHover" href="/profile">
+                                    <i class="fas fa-key"></i>
+                                    <%= __('Change password')%>
+                                </a>
+                                <a class="dropdown-item menuBarHover" href="/logout">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <%= __('Logout')%>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="left-sidebar" data-sidebarbg="skin6" style="display: none">
+            <div class="scroll-sidebar">
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li class="sidebar-item pt-2">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/dashboard" aria-expanded="false">
+                                <i class="fa fa-database" aria-hidden="true"></i>
+                                <span class="hide-menu">
+                                    <%= __('STATISTIC')%>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item pt-2">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/source_3/all" aria-expanded="false">
+                                <i class="fa fa fa-edit" aria-hidden="true"></i>
+                                <span class="hide-menu">
+                                    <%= __('DATA TRACKING')%>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<%= __('ALERTS')%>" aria-expanded="false">
+                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <span class="hide-menu">
+                                    <%= __('ALERTS')%>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/report" aria-expanded="false">
+                                <i class="fa fa-paste" aria-hidden="true"></i>
+                                <span class="hide-menu">
+                                    <%= __('REPORT')%>
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin" aria-expanded="false">
+                                <i class="fas fa-user" aria-hidden="true"></i>
+                                <span class="hide-menu"><%= __('USER MANAGE')%></span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+        </aside>
+    </div>
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Three charts -->
+                <!-- ============================================================== -->
+                <div class="row justify-content-center mt-5">
+                    <div class="col-lg-4 col-md-12">
+                        <div class="white-box analytics-info"
+                            style="background-image: linear-gradient( -20deg, #2b5876 0%, #4e4376 100%) !important;color: white;">
+                            <h3 class="box-title"><%= __('Total device')%></h3>
+                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                                <li>
+                                    <div id="sparklinedash"><canvas width="67" height="30"
+                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                                    </div>
+                                </li>
+                                <li class="ms-auto"><span class="counter text" id="TotalDevice"
+                                        style="font-weight: bold;"></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="white-box analytics-info"
+                            style="background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%) !important; color: white;">
+                            <h3 class="box-title"><%= __('Total device on')%></h3>
+                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                                <li>
+                                    <div id="sparklinedash2"><canvas width="67" height="30"
+                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                                    </div>
+                                </li>
+                                <li class="ms-auto"><span class="counter text" id="onEq"
+                                        style="font-weight: bold;"></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="white-box analytics-info"
+                            style="background-image: linear-gradient(to top, #dee8e4 0%, #54c9a4 100%) !important; color: white;">
+                            <h3 class="box-title"><%= __('Total device off')%></h3>
+                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                                <li>
+                                    <div id="sparklinedash3"><canvas width="67" height="30"
+                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                                    </div>
+                                </li>
+                                <li class="ms-auto"><span class="counter text" id="offEq"
+                                        style="font-weight: bold;"></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- PRODUCTS YEARLY SALES -->
+                <!-- ============================================================== -->
+                <!-- <div class="row">
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Products Yearly Sales</h3>
+                            <div id="ct-visits" style="height: 405px;">
+                                <div class="chartist-tooltip" style="top: -17px; left: -12px;"><span
+                                        class="chartist-tooltip-value">6</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="row">
+                    <div class="col-md-12 col-lg-3 col-sm-12 col-xs-12">
+                        <div class="mb-3 card">
+                            <div class="card-header-tab card-header-tab-animation card-header">
+                                <div class="card-header-title">
+                                    <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i>
+                                    <%= __('Device')%>
+                                </div>
+                                <!-- <ul class="nav">
+                                        <li class="nav-item"><a href="javascript:void(0);"
+                                                class="active nav-link">Last</a></li>
+                                        <li class="nav-item"><a href="javascript:void(0);"
+                                                class="nav-link second-tab-toggle">Current</a></li>
+                                    </ul> -->
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="tabs-eg-77">
+                                        <div name="barDashboard">
+                                            <div class="row">
+                                                <div style="width:100%">
+                                                    <div id="chartDivwt" style="height:400px"></div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <!-- <div style="width: 100%; text-align: center; font-size: medium; font-weight: bold; margin: 5px;">Wmeter</div> -->
+                                                    <label class="labelInforTab"><%= __('ONLINE')%></label>
+                                                    <input type="text" id="onEqWmeter" class="form-control" disabled>
+                                                    <label class="labelInforTab"><%= __('OFFLINE')%></label>
+                                                    <input type="text" id="offEqWmeter" class="form-control" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-9 col-sm-12 col-xs-12">
+                        <div class="mb-3 card">
+                            <div class="card-header-tab card-header">
+                                <div class="card-header-title">
+                                    <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
+                                    <%= __('Chart')%>
+                                </div>
+                                <!-- <div class="btn-actions-pane-right">
+                                        <div class="nav">
+                                            <a href="javascript:void(0);"
+                                                class="border-0 btn-pill btn-wide btn-transition active btn btn-outline-alternate">Tab
+                                                1</a>
+                                            <a href="javascript:void(0);"
+                                                class="ml-1 btn-pill btn-wide border-0 btn-transition  btn btn-outline-alternate second-tab-toggle-alt">Tab
+                                                2</a>
+                                        </div>
+                                    </div> -->
+                            </div>
+                            <div class="tab-content">
+                                <div class="tab-pane fade active show" id="tab-eg-55">
+                                    <div name="contentChart" class="container-fluid pt-3">
+                                        <div name="divDashBoard" class="row mt-4">
+                                            <div class="col-lg-9">
+                                                <div id="chart3" style="height: 515px; width: 100%;"></div>
+                                            </div>
+                                            <div class="col-lg-3 border card p-0">
+                                                <div class="titleDashboard"
+                                                    style="width: 100%; height: 50px; background-color: lightgray; padding: 9px;">
+                                                    <div class="row">
+                                                        <div class="col-lg-10 col-md-11 col-sm-11 col-10">
+                                                            <h6 id="chart3Name">
+                                                                <%= __('Name')%>
+                                                            </h6>
+                                                        </div>
+                                                        <div class="col-lg-2 col-md-1 col-sm-1 col-2">
+                                                            <i class="fas fa-ellipsis-v mt-1 settingBtn"
+                                                                id="chart3Setting"></i>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="mb-3">
+                                                        <label class="labelInforTab">ID</label>
+                                                        <input type="text" class="form-control" id="IDchart3" disabled>
+                                                    </div>
+                                                    <strong>
+                                                        <%= __('Decription')%>:
+                                                    </strong>
+                                                    <p class="card-text" id="decriptchart3">
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4"></div>
+                                        <div id="ChartSettingModal" class="modal fade" tabindex="-1" role="dialog"
+                                            aria-hidden="true" data-keyboard="false" data-backdrop="static">
+                                            <div class="modal-dialog " role="document" style="max-width: 800px;">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h6>
+                                                            <%= __('Setting')%>
+                                                        </h6>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close"><span
+                                                                aria-hidden="true">&times;</span></button>
+                                                    </div>
+                                                    <div class="modal-body container-fluid">
+                                                        <div class="row m-3">
+                                                            <div class="col-4 text-left">
+                                                                <label
+                                                                    style="float: left; font-weight: bold;">ID</label>
+                                                                <!-- <input type="text" class="form-control roleAdmin" id="idSetting" style="width: 100%"> -->
+                                                                <select
+                                                                    class="selectpicker form-control roleAdmin selectInput border"
+                                                                    data-live-search="true" id="idSetting"
+                                                                    data-size="4">
+
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-2 text-left">
+                                                                <label style="float: left; font-weight: bold;">
+                                                                    <%= __('Time')%>
+                                                                </label>
+                                                                <select class="custom-select editFontSize "
+                                                                    id="selectTime" style="font-size: 10px;">
+                                                                    <option value="1month">
+                                                                        <%= __('1 month')%>
+                                                                    </option>
+                                                                    <option value="2month">
+                                                                        <%= __('2 month')%>
+                                                                    </option>
+                                                                    <option value="custom" id="customTime">
+                                                                        <%= __('custom')%>
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <input type="text" name="datetimes"
+                                                                    class="form-control editFontSize mt-4 "
+                                                                    id="picktimeChart" style="display:none;">
+                                                            </div>
+                                                            <div class="col-2 text-left">
+                                                                <label class="labelInforTab" style="float: left;">
+                                                                    <%= __('Type of chart')%>
+                                                                </label>
+                                                                <select class="custom-select editFontSize "
+                                                                    id="typeChart">
+                                                                    <option value="line">
+                                                                        <%= __('Line')%>
+                                                                    </option>
+                                                                    <option value="bar">
+                                                                        <%= __('Bar')%>
+                                                                    </option>
+                                                                    <option value="point">
+                                                                        <%= __('Point')%>
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row text-left m-3">
+                                                            <label class="labelInforTab ml-3">
+                                                                <%= __('DECRIPTIONS')%>:
+                                                            </label>
+                                                            <textarea spellcheck="false" name="decript"
+                                                                id="decriptSetting"
+                                                                class="ml-4 mr-4 form-control roleAdmin"
+                                                                style="min-height: 100px; width: 100%; resize: none;"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-success btn-sm roleAdmin"
+                                                            onclick="updateDashboard()">
+                                                            <%= __('Save')%>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="js/custom.js"></script>
+    <!--This page JavaScript -->
+    <!--chartis chart-->
+    <script src="plugins/bower_components/chartist/dist/chartist.min.js"></script>
+    <script src="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="js/pages/dashboards/dashboard1.js"></script>
+</body>
+
+</html>

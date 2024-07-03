@@ -1,0 +1,77 @@
+<!-- <div>Hiển thị chỉ số từng thời điểm</div> -->
+<div class="mt-2">
+    <!-- <div class="row mb-3">
+        <div class="col-4">
+
+        </div>
+    </div> -->
+    <div class="row">
+        <div class="col-3 text-left">
+            <label class="labelInforTab"><%= __('Time')%></label>
+            <select class="custom-select  " id="select_time_data">
+                <option value="24hour"><%= __('24 hours')%></option>
+                <option value="week"><%= __('1 week')%></option>
+                <option value="month"><%= __('1 month')%></option>
+                <option value="custom" id="customTime_data"><%= __('custom')%></option>
+            </select>
+        </div>
+
+        <div class="col-4 mt-2">
+            <input type="text" name="datetimes" class="form-control  mt-4" id="pick_time_data" style="display:none;" autocomplete="off" />
+        </div>
+        <div class="col-3 text-left">
+            <label class="labelInforTab"><%= __('Moment')%></label>
+            <select class="custom-select  " id="select_moment_data">
+                <!-- onchange="selectTimeShow()" -->
+                <option value="raw"><%= __('Raw')%></option>
+                <option value="30minute"><%= __('30 minute')%></option>
+                <option value="hour"><%= __('Hour')%></option>
+                <option value="day"><%= __('Day')%></option>
+                <option value="week"><%= __('Week')%></option>
+                <option value="month"><%= __('Month')%></option>
+                <option value="year"><%= __('Year')%></option>
+            </select>
+        </div>
+        <div class="col-2">
+            <button class="btn btn-success mt-4" style="position: relative; top: 10px;" onclick="submit_getDataEQ()"><%= __('Submit')%></button>
+        </div>
+    </div>
+</div>
+<div class="table-responsive mt-3" style="min-height: 500px;">
+    <table id="table_data" class="table text-center " style="width:100%">
+        <thead>
+            <tr class="titleRow">
+                <th>
+                    <%= __('Index')%> &nbsp;</th>
+                <th style="width: 15%;">
+                    <%= __('Time')%>
+                </th>
+                <th>
+                    <%= __('Value of number')%>
+                </th>
+                <th>
+                    <%= __('Pressure')%> (Pa)
+                </th>
+                <th>
+                    <%= __('Flow rate')%> (m3/h)
+                </th>
+                <th style="width: 10%;">
+                    <%= __('Measure Value Level')%>
+                </th>
+                <th>
+                    <%= __('Pin voltage')%> (V)
+                </th>
+                <th>
+                    <%= __('Battery voltage')%> (V)
+                </th>
+                <th>
+                    <%= __('Quanity')%> (m3)
+                </th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<div class="modal-footer">
+    <button class=" mr-3 btn btn-success" onclick="export_data()"><%= __('Export data')%></button>
+</div>

@@ -1,0 +1,70 @@
+<div name="alert_list" class="mt-2">
+    <div class="row mb-2">
+        <div class="col-2 text-left">
+            <label class="labelInforTab"><%= __('Number alert')%>:</label>
+            <input class="form-control" id="totalAlert" disabled>
+        </div>
+        <div class="col-2 text-left">
+            <label class="labelInforTab"><%= __('Time')%></label>
+            <select class="custom-select  " id="selectTimeAlert">
+                    <!--onchange="selectTimeZoneChart();"-->
+                    <option value="week"><%= __('1 week')%></option>
+                    <option value="month"><%= __('1 month')%></option>
+                    <option value="custom" id="customTimeMultiAlert"><%= __('custom')%></option>
+                </select>
+        </div>
+        <div class="col-3 text-left mt-2">
+            <input type="text" name="datetimes" class="form-control  mt-4" id="picktimeAlert" style="display:none;">
+        </div>
+        <div class="col-2 text-left">
+            <!-- <label class="labelInforTab"><%= __('Select parameter')%></label>
+            <div class="dropdown">
+                <button class="btn  dropdown-toggle" style="width: 100%; border: solid 1px gray;" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <%= __('Select parameter')%>
+                      <span class="caret"></span>
+                    </button>
+                <ul class="dropdown-menu checkbox-menu allow-focus pl-3" aria-labelledby="dropdownMenu3">
+                    <li class="selectParaAlertwt"><label><input type="checkbox" class="selectParaAlert wt" value="pressure" id="selectParaAlertpressure"><%= __('Pressure')%></label></li>
+                    <li class="selectParaAlertwt"><label><input type="checkbox" class="selectParaAlert wt" value="quanity" id="selectParaAlertquanity"><%= __('Quanity')%></label></li>
+                    <li class="selectParaAlertwt"><label><input type="checkbox" class="selectParaAlert wt" value="flowRate" id="selectParaAlertflowRate"><%= __('Flow rate')%></label></li>
+                </ul>
+            </div> -->
+        </div>
+        <div class="col-3 text-left mt-4">
+            <button class="btn btn-success" style="position: relative; top: 10px;" onclick="filter()"><%= __('Submit')%></button>
+        </div>
+    </div>
+
+    <div id="tableal">
+        <div class="table-responsive mt-3" style="min-height: 400px;">
+            <table id="tableAlert" class="table text-center " style="width:100%">
+                <thead>
+                    <tr class="titleRow">
+                        <th>
+                            <%= __('Index')%> &nbsp;
+                        </th>
+                        <th>
+                            <%= __('Alert type')%>
+                        </th>
+                        <th>
+                            <%= __('Threshold')%>
+                        </th>
+                        <th>
+                            <%= __('Alert value')%>
+                        </th>
+                        <!-- <th>
+                            <%= __('Comparative value')%>
+                        </th> -->
+                        <th>
+                            <%= __('Alert time')%>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success " onclick="refreshTable()"><%= __('Refresh data')%></button>
+</div>

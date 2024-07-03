@@ -1,0 +1,492 @@
+<button id="back-to-top" class="btn btn-lg" style="background-color: #3498db; position: fixed; bottom: 30px;  right: 30px; display: none;  z-index: 99;"><i class="fas fa-chevron-up"></i></button>
+<div name="tableBar">
+    <div class="row">
+        <div class="col-2 mt-4 total_e">
+            <%= __('Total source')%> :
+                <Span id="totalSource"></Span>
+        </div>
+        <div class="col-4 mt-4">
+            <!-- <button class="btn btn-success btn-sm mr-3" onclick="exportEQInfo()" disabled id="exportEQInfoBtn">Export
+                equipments infomation</button> -->
+            <!-- <button class="btn btn-success mr-3 btn-e" onclick="createReport()" disabled id="creatReportBtn">
+                <%= __('Create Report')%>
+            </button> -->
+            <!-- <button class="btn btn-success btn-sm mr-3" onclick="exportEQ()" >Export equipment list</button> -->
+            <button class="btn btn-success btn-e float-left mr-3" onclick="refresh_eqlist_table()">
+                <%= __('Refresh data')%>
+            </button>
+            <button class="btn btn-success btn-e float-left  mr-3" onclick="change_type_show_meter_list(1)" >
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </button>
+            <button class="btn btn-success btn-e float-left  mr-3" onclick="change_type_show_meter_list(2)" >
+                <i class="fa fa-th" aria-hidden="true"></i>
+            </button>
+            <button class="btn btn-success btn-e float-left  mr-3" onclick="change_type_show_meter_list(3)" >
+                <i class="fa fa-map" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="col-2 mt-4" id="search_grid_meter_container"></div>
+        <div class="col-2  mt-4">
+            <div class="row">
+                <label class="mr-2 mt-2" style="font-weight: bold;">
+                    <%= __('GROUP')%>:
+                </label>
+                <% if(role != "admin"){ %>
+                    <input type="text" value="<%=group %>" disabled style="float: right; width: 60%;">
+                <% }else{ %>
+                    <select class="form-control" id="filter_group" style="float: right; width: 60%;">
+                        <option value="all" selected>
+                            <%= __('ALL')%>
+                        </option>
+                        <i class="fas fa-sort-down"></i>
+                    </select>
+                <% } %>
+            </div>
+        </div>
+        <div class="col-2 mt-4">
+            <div class="row">
+                <label class="mr-2 mt-2" style="font-weight: bold;">
+                    <%= __('SUB GROUP')%>:
+                </label>
+                <select class="form-control" id="filter_sub_group" style="float: right; width: 50%;">
+                    <option value="all" selected>
+                        <%= __('ALL')%>
+                    </option>
+                    <i class="fas fa-sort-down"></i>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal export equipment info -->
+<div id="exportMultiEqinfo" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog " role="document" style="max-width: 900px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6>
+                    <%= __('Settings export')%>
+                </h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body container-fluid">
+                <div class="container-fluid mt-3">
+                    <h6>
+                        <%= __('Selected equipment')%>
+                    </h6>
+                    <input type="text" class="form-control" disabled="disable" id="selectedExportMutilEQinfo" style="width: 100%">
+                    <div name="settingReport" class="mt-3 row">
+                        <div class="col-2">
+                            <label style="float: left; font-weight: bold;">
+                                <%= __('Name')%>
+                            </label>
+                            <input class="form-control" id="nameReportinfo" placeholder="<%= __('Name ...')%>" width="100%" autocomplete="off">
+                        </div>
+                        <div class="col-2">
+                            <label style="float: left; font-weight: bold;">
+                                <%= __('Time')%>
+                            </label>
+                            <select class="custom-select editFontSize " id="selectTimeMultiExportinfo" style="font-size: 10px;">
+                                <!-- onchange="selectTimeMultiExport();" -->
+                                <option value="24hour">
+                                    <%= __('24 hours')%>
+                                </option>
+                                <option value="week">
+                                    <%= __('1 week')%>
+                                </option>
+                                <option value="month">
+                                    <%= __('1 month')%>
+                                </option>
+                                <option value="custom" id="customTimeMultiExportinfo">
+                                    <%= __('custom')%>
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-3">
+                            <input type="text" name="datetimes" class="form-control editFontSize mt-4" id="picktimeMultiExportinfo" style="display:none;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success btn-sm" onclick="creatReportAndExportDatainfo()">
+                    <%= __('Export')%>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->
+
+<!-- modal export multi equipment -->
+<div id="exportMultiEq" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog " role="document" style="max-width: 900px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6>
+                    <%= __('Report Schedule Settings')%>
+                </h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body container-fluid">
+                <div class="container-fluid mt-3">
+                    <h6>
+                        <%= __('Selected equipment')%>
+                    </h6>
+                    <input type="text" class="form-control" disabled="disable" id="selectedExportMutilEQ" style="width: 100%">
+                    <div name="settingReport" class="mt-3 row">
+                        <div class="col-2">
+                            <label style="float: left; font-weight: bold;">
+                                <%= __('Name')%>
+                            </label>
+                            <input class="form-control" id="nameReport" placeholder="<%= __('Name report...')%>" width="100%" autocomplete="off">
+                        </div>
+                        <div class="col-2">
+                            <label style="float: left; font-weight: bold;">
+                                <%= __('Time')%>
+                            </label>
+                            <select class="custom-select editFontSize " id="selectTimeMultiExport" style="font-size: 10px;">
+                                <!-- onchange="selectTimeMultiExport();" -->
+                                <option value="24hour">
+                                    <%= __('24 hours')%>
+                                </option>
+                                <option value="week">
+                                    <%= __('1 week')%>
+                                </option>
+                                <option value="month">
+                                    <%= __('1 month')%>
+                                </option>
+                                <option value="custom" id="customTimeMultiExport">
+                                    <%= __('custom')%>
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-3">
+                            <input type="text" name="datetimes" class="form-control editFontSize mt-4" id="picktimeMultiExport" style="display:none;">
+                        </div>
+                        <div class="col-2">
+                            <label style="float: left; font-weight: bold;">
+                                <%= __('Moment')%>
+                            </label>
+                            <!-- onchange="selectTimeShowMultiExport()"-->
+                            <select class="custom-select editFontSize " id="selectMomentMultiExport">
+                                <option value="raw">
+                                    <%= __('Raw')%>
+                                </option>
+                                <option value="30minute">
+                                    <%= __('30minute')%>
+                                </option>
+                                <option value="hour">
+                                    <%= __('Hour')%>
+                                </option>
+                                <option value="day">
+                                    <%= __('Day')%>
+                                </option>
+                                <option value="week">
+                                    <%= __('Week')%>
+                                </option>
+                                <option value="month">
+                                    <%= __('Month')%>
+                                </option>
+                                <option value="year">
+                                    <%= __('Year')%>
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-3">
+                            <label style="float: left; font-weight: bold;">
+                                <%= __('Select Parameter')%>
+                            </label>
+
+                            <div class="dropdown">
+                                <button class="btn editFontSize dropdown-toggle" style="width: 180px; border: solid 1px gray;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <%= __('Select parameter')%>
+                                        <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu checkbox-menu allow-focus pl-3" aria-labelledby="dropdownMenu1">
+                                    <li class="wt"><label><input type="checkbox" class="selectParaMultiExport"
+                                                value="pressure" id="selectParaMultiExportpressure">
+                                            <%= __('Pressure')%>
+                                        </label>
+                                    </li>
+                                    <li class="wt"><label><input type="checkbox" class="selectParaMultiExport"
+                                                value="quanity" id="selectParaMultiExportquanity">
+                                            <%= __('Quanity')%>
+                                        </label></li>
+                                    <li class="wt"><label><input type="checkbox" class="selectParaMultiExport"
+                                                value="flowRate" id="selectParaMultiExportflowRate">
+                                            <%= __('Flow rate')%>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success btn-sm" onclick="creatReportAndExportData()">
+                    <%= __('Creat report and export data')%>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end modal-->
+<div class="tb_color mt-3">
+    <div id="grid_meter_list" class="mt-3 pr-3 pl-4" style="width:100%;"></div>
+    <div id="map_meter_list" class="mt-3 pr-3 pl-4" style="width:100%; min-height:700px;"></div>
+    <div id="table_meter_list" class="table-responsive mt-3 pr-3 pl-3 tableContain" style="min-height: 700px;" >
+        <table id="tableSource" class="table table-hover" style="width:100%">
+            <thead>
+                <tr class="titleRow">
+                    <th><input type="checkbox" id="checkAllEQ"></th>
+                    <th>
+                        <%= __('Meter ID')%>&nbsp;
+                    </th>
+                    <th style="width: 15%;">
+                        <%= __('Name meter')%>
+                    </th>
+                    <th>
+                        <%= __('Indicator')%>
+                    </th>
+                    <th>
+                        <%= __('Pressure')%> (Pa)
+                    </th>
+                    <th>
+                        <%= __('Frequency')%>
+                    </th>
+                    <th>
+                        <%= __('Pin voltage')%> (V)
+                    </th>
+                    <th>
+                        <%= __('Battery voltage')%> (V)
+                    </th>
+                    <th style="width: 10%;">
+                        <%= __('Measure value level')%> (cm)
+                    </th>
+                    <th>
+                        <%= __('Status')%>
+                    </th>
+                    <th style="width: 15%;">
+                        <%= __('Last data date')%>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+
+<!-- Modal thông tin chi tiết thiết bị -->
+<div id="DetalEQ" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog " role="document" style="max-width: 90%; min-height: 850px;">
+        <div class="modal-content pt-3">
+            <div class="modal-header">
+                <h6 id="titleNameEQ" class="modal-title">NAMEEQ</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body container-fluid">
+                <!-- Hiển thị nội dung modal -->
+                <div class="container-fluid">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link modalTab active" data-toggle="tab" data-target="#instant_value_tab">
+                                <%= __('Instant value')%>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link modalTab" data-toggle="tab" data-target="#detail_data_tab">
+                                <%= __('Data')%>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link modalTab" data-toggle="tab" data-target="#visualize_tab">
+                                <%= __('Visualize')%>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link modalTab" data-toggle="tab" data-target="#warning_tab">
+                                <%= __('Warning')%>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link modalTab" data-toggle="tab" data-target="#location_tab">
+                                <%= __('Loctation')%>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link modalTab" data-toggle="tab" data-target="#information_tab">
+                                <%= __('Infomation')%>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link modalTab" data-toggle="tab" data-target="#setting_tab">
+                                <%= __('Setting')%>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link modalTab" data-toggle="tab" data-target="#setting_alert_tab">
+                                <%= __('Setting alert')%>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link modalTab" data-toggle="tab" data-target="#setting_flowrate_pressure_tab">
+                                <%= __('Setting flowrate and pressure')%>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link modalTab" data-toggle="tab" data-target="#setting_pressure_level_tab">
+                                <%= __('Setting pressure')%>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link modalTab" data-toggle="tab" data-target="#setting_measure_level_tab">
+                                <%= __('Setting measure level')%>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="container-fluid pt-3 pb-3 tab-content" style=" text-align: center; ">
+                    <!-- instant tab -->
+                    <div id="instant_value_tab" class="container-fluid tab-pane active">
+                        <% include source_eqlist_detail_2/source_eqdetail_instant_value.ejs %>
+                    </div>
+                    <div id="detail_data_tab" class="container-fluid tab-pane ">
+                        <% include source_eqlist_detail_2/source_eqdetail_data.ejs %>
+                    </div>
+                    <div id="visualize_tab" class="container-fluid tab-pane ">
+                        <% include source_eqlist_detail_2/source_eqdetail_visualize.ejs %>
+                    </div>
+                    <div id="warning_tab" class="container-fluid tab-pane ">
+                        <% include source_eqlist_detail_2/source_eqdetail_warning.ejs %>
+                    </div>
+                    <div id="location_tab" class="container-fluid tab-pane ">
+                        <% include source_eqlist_detail_2/source_eqdetail_location.ejs %>
+                    </div>
+                    <div id="information_tab" class="container-fluid tab-pane ">
+                        <% include source_eqlist_detail_2/source_eqdetail_information.ejs %>
+                    </div>
+                    <div id="setting_tab" class="container-fluid tab-pane ">
+                        <% include source_eqlist_detail_2/source_eqdetail_setting.ejs %>
+                    </div>
+                    <div id="setting_alert_tab" class="container-fluid tab-pane ">
+                        <% include source_eqlist_detail_2/source_eqdetail_setting_alert.ejs %>
+                    </div>
+                    <div id="setting_flowrate_pressure_tab" class="container-fluid tab-pane ">
+                        <% include source_eqlist_detail_2/source_eqdetail_setting_flowrate_pressure.ejs %>
+                    </div>
+                    <div id="setting_pressure_level_tab" class="container-fluid tab-pane ">
+                        <% include source_eqlist_detail_2/source_eqdetail_setting_pressure.ejs %>
+                    </div>
+                    <div id="setting_measure_level_tab" class="container-fluid tab-pane ">
+                        <% include source_eqlist_detail_2/source_eqdetail_setting_measure_level.ejs %>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="modal-footer">
+                    
+                    <button type="button" class="btn btn-primary" id="deleteSourceBtn">Delete source</button>
+                    <button type="button" class="btn btn-success" onclick="saveConfig()">Save</button>
+                    </div> -->
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+
+
+<!-- Modal thông tin chi tiết thiết bị biến tần-->
+<div id="DetalEQ_inverter" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog " role="document" style="max-width: 90%; min-height: 850px;">
+        <div class="modal-content pt-3">
+            <div class="row mt-1">
+                <div class="col-5 ml-5">
+                    <h5 id="inverter_name" class="row"></h5>
+                    <!-- <h6 id="inverter_code" class="row"></h6> -->
+                </div>
+                <div class="col-6 ml-5 text-left">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+            </div>
+            <div class="modal-body container-fluid">
+                <div class="container-fluid">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link modalTab active" data-toggle="tab" data-target="#instant_value_tab_inverter">
+                                <%= __('Instant value')%>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link modalTab" data-toggle="tab" data-target="#detail_data_tab_inverter">
+                                <%= __('Operation data')%>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link modalTab" data-toggle="tab" data-target="#detail_inverter_tab_inverter">
+                                <%= __('Inverter')%>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link modalTab" data-toggle="tab" data-target="#visualize_tab_inverter">
+                                <%= __('Visualize')%>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link modalTab" data-toggle="tab" data-target="#warning_tab_inverter">
+                                <%= __('Warning')%>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link modalTab" data-toggle="tab" data-target="#information_tab_inverter">
+                                <%= __('Infomation')%>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link modalTab" data-toggle="tab" data-target="#setting_amperage_tab_inverter">
+                                <%= __('Setting frequency')%>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link modalTab" data-toggle="tab" data-target="#setting_pressure_config_tab_inverter">
+                                <%= __('Setting pressure config')%>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="container-fluid pt-3 pb-3 tab-content" style=" text-align: center; ">
+                    <div id="instant_value_tab_inverter" class="container-fluid tab-pane active">
+                        <%- include('source_inverter_detail_2/source_eqdetail_instant_value'); %>
+                    </div>
+                    <div id="detail_data_tab_inverter" class="container-fluid tab-pane ">
+                        <%- include('source_inverter_detail_2/source_eqdetail_data'); %>
+                    </div>
+                    <div id="detail_inverter_tab_inverter" class="container-fluid tab-pane ">
+                        <%- include('source_inverter_detail_2/source_eqdetail_inverter'); %>
+                    </div>
+                    <div id="visualize_tab_inverter" class="container-fluid tab-pane ">
+                        <%- include('source_inverter_detail_2/source_eqdetail_visualize'); %>
+                    </div>
+                    <div id="warning_tab_inverter" class="container-fluid tab-pane ">
+                        <%- include('source_inverter_detail_2/source_eqdetail_warning'); %>
+                    </div>
+                    <div id="information_tab_inverter" class="container-fluid tab-pane ">
+                        <%- include('source_inverter_detail_2/source_eqdetail_information'); %>
+                    </div>
+                    <div id="setting_amperage_tab_inverter" class="container-fluid tab-pane ">
+                        <%- include('source_inverter_detail_2/source_eqdetail_setting_frequency'); %>
+                    </div>
+                    <div id="setting_pressure_config_tab_inverter" class="container-fluid tab-pane ">
+                        <%- include('source_inverter_detail_2/source_eqdetail_setting_pressure_alert'); %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

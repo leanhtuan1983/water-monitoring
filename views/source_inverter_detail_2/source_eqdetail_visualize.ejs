@@ -1,0 +1,63 @@
+<div name="settingChart" class="mt-2">
+    <div class="row">
+        <div class="col-2 text-left">
+            <label class="labelInforTab"><%= __('From')%></label>
+            <input class="form-control" type="text" autocomplete="off" id="time_chart_from_inverter">
+        </div>
+        <div class="col-2 text-left">
+            <label class="labelInforTab"><%= __('To')%></label>
+            <input class="form-control" type="text" autocomplete="off" id="time_chart_to_inverter">
+        </div>
+        <div class="col-2 text-left">
+            <label class="labelInforTab"><%= __('Type of chart')%></label>
+            <select class="custom-select  " id="typeChart_inverter">
+                    <option value="line"><%= __('Slide')%></option>
+                    <option value="bar"><%= __('Bar')%></option>
+                    <option value="point"><%= __('Point')%></option>
+                </select>
+        </div>
+        <div class="col-2 text-left">
+            <label class="labelInforTab"><%= __('Select parameter')%></label>
+            <div class="dropdown">
+                <button class="btn  dropdown-toggle" style="width: 100%; border: solid 1px gray;" type="button" id="dropdownMenu2_inverter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <%= __('Select parameter')%>
+                    </button>
+                <ul class="dropdown-menu checkbox-menu allow-focus pl-3" aria-labelledby="dropdownMenu2_inverter">
+                    <li class="wt"><label><input type="checkbox" class="selectParaExport_inverter"
+                                    value="pressure" id="selectParaExportpressure_inverter"><%= __('Pressure')%></label>
+                    </li>
+                    <li class="wt"><label><input type="checkbox" class="selectParaExport_inverter"
+                        value="cur_fre" id="selectParaExportfre_inverter"><%= __('frequency')%></label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-2 text-left">
+            <label class="labelInforTab"><%= __('Custom color')%></label>
+            <div class="dropdown">
+                <button class="btn editFontSize dropdown-toggle" style="width: 70%; border: solid 1px gray;" type="button" id="dropdownMenu3_inverter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <%= __('Pick color')%>
+                    </button>
+                <ul class="dropdown-menu checkbox-menu allow-focus pl-3" aria-labelledby="dropdownMenu3_inverter" style="width: 350px !important;">
+                    <li class="wt"><input style="width: 20px" type="color" class="selectcolor_inverter" id="colorpressure_inverter">
+                        <%= __('pressure')%>
+                    </li>
+                    <li class="wt"><input style="width: 20px" type="color" class="selectcolor_inverter" id="colorfre_inverter">
+                        <%= __('frequency')%>
+                    </li>
+                    <li style="float: right;" class="m-2"><button class="btn btn-sm btn-success" onclick="submitColor_inverter()"><%= __('Submit')%></button></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-2 text-left" style="margin-top: 30px">
+            <button class="btn btn-success" onclick="submit_get_chart_inverter()"><%= __('Load data')%></button>
+        </div>
+    </div>
+</div>
+<div id="test12_inverter" style="width:100%;">
+    <div id="chartMain_inverter" style=" min-height: 500px; width: 100%;"></div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-success" onclick="saveConfig_inverter()"><%= __('Save')%></button>
+</div>

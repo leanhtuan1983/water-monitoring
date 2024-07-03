@@ -1,0 +1,32 @@
+<!-- <div>hiển thị bản đồ vị trí</div> -->
+<% if(role == "admin" || role == "admin_client"){ %>
+<div class="row mb-4">
+    <div class="col-5 text-left">
+        <label class="labelInforTab"><%= __('Locaiton lat')%></label>
+        <input type="text" class="form-control" id="map_location_lat" autocomplete="off">
+    </div>
+    <div class="col-5 text-left">
+        <label class="labelInforTab"><%= __('Location long')%></label>
+        <input type="text" class="form-control" id="map_location_long" autocomplete="off">
+    </div>
+    <div class="col-2 text-left">
+        <button type="text" class="btn btn-success mt-4" style="position: relative; top: 10px;" onclick="save_map_location()"><%= __('Save')%></button>
+    </div>
+</div>
+<% }else{ %>
+    <div class="row mb-4">
+        <div class="col-5 text-left">
+            <label class="labelInforTab"><%= __('Locaiton lat')%></label>
+            <input type="text" class="form-control" id="map_location_lat" autocomplete="off" disabled>
+        </div>
+        <div class="col-5 text-left">
+            <label class="labelInforTab"><%= __('Location long')%></label>
+            <input type="text" class="form-control" id="map_location_long" autocomplete="off" disabled>
+        </div>
+        <div class="col-2 text-left"></div>
+    </div>
+<% } %>
+<div id="contain_map" style="min-height: 500px;">
+    <div id="map_single_eq" class="m-3" style="width:100%; min-height:400px"></div>
+</div>
+

@@ -1,0 +1,111 @@
+<!-- <div>hiển thị thông tin điểm đo</div> -->
+<div style="min-height: 500px;">
+    <% if(role == "admin" || role == "admin_client"){ %>
+    <div class="row mb-4">
+        <div class="col-6 text-left">
+            <label class="labelInforTab"><%= __('Group')%></label>
+            <div class="dropdown">
+                <button class="btn dropdown-toggle form-control" style="width: 100%; border: solid 1px gray;" type="button" id="dropdown_group" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <%= __('Group')%>
+                    </button>
+                <ul class="dropdown-menu checkbox-menu allow-focus pl-3" aria-labelledby="dropdown_group" id="group_eq" style="width: 100%;">
+                </ul>
+            </div>
+        </div>
+        <div class="col-6 text-left">
+            <label class="labelInforTab"><%= __('Branch/Total manage')%></label>
+            <select class="form-control" id="total_branch_setting">
+                <option value="not_setting"><%= __('Not setting')%></option>
+                <option value="branch"><%= __('Branch')%></option>
+                <option value="total"><%= __('total')%></option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-3 text-left">
+            <label class="labelInforTab"><%= __('Location lat')%></label>
+            <input type="text" class="form-control" id="location_lat" autocomplete="off">
+        </div>
+        <div class="col-3 text-left">
+            <label class="labelInforTab"><%= __('Location long')%></label>
+            <input type="text" class="form-control" id="location_long" autocomplete="off">
+        </div>
+        <div class="col-6 text-left">
+            <label class="labelInforTab"><%= __('Name')%></label>
+            <input type="text" class="form-control" id="name_eq" autocomplete="off">
+        </div>
+    </div>
+    <div class="row mb-4 text-left">
+        <label class="labelInforTab"><%= __('Address')%></label>
+        <textarea spellcheck="false" class="form-control ml-3 mr-3" style="min-height: 100px; width: 100%; resize: none;" id="address_info"></textarea>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-4 text-left">
+            <label class="labelInforTab"><%= __('Install date')%></label>
+            <input type="date" class="form-control" id="install_date" autocomplete="off">
+        </div>
+        <div class="col-4 text-left">
+            <label class="labelInforTab"><%= __('Inspection date')%></label>
+            <input type="date" class="form-control" id="inspection_date" autocomplete="off">
+        </div>
+        <div class="col-4 text-left">
+            <label class="labelInforTab"><%= __('Install loger date')%></label>
+            <input type="date" class="form-control" id="loger_install_date" placeholder="yyyy-mm-dd" autocomplete="off">
+        </div>
+    </div>
+    <% }else{ %>
+        <div class="row mb-4">
+            <div class="col-6 text-left">
+                <label class="labelInforTab"><%= __('Group')%></label>
+                <input type="text" id="static_group" class="form-control" value="<%=group %>" disabled style="width: 100%;" >
+            </div>
+            <div class="col-6 text-left">
+                <label class="labelInforTab"><%= __('Branch/Total manage')%></label>
+                <select class="form-control" id="total_branch_setting" disabled>
+                    <option value="not_setting"><%= __('Not setting')%></option>
+                    <option value="branch"><%= __('Branch')%></option>
+                    <option value="total"><%= __('total')%></option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-3 text-left">
+                <label class="labelInforTab"><%= __('Location lat')%></label>
+                <input type="text" class="form-control" id="location_lat" autocomplete="off" disabled>
+            </div>
+            <div class="col-3 text-left">
+                <label class="labelInforTab"><%= __('Location long')%></label>
+                <input type="text" class="form-control" id="location_long" autocomplete="off" disabled>
+            </div>
+            <div class="col-6 text-left">
+                <label class="labelInforTab"><%= __('Name')%></label>
+                <input type="text" class="form-control" id="name_eq" autocomplete="off" disabled>
+            </div>
+        </div>
+        <div class="row mb-4 text-left">
+            <label class="labelInforTab"><%= __('Address')%></label>
+            <textarea spellcheck="false" class="form-control ml-3 mr-3" style="min-height: 100px; width: 100%; resize: none;" id="address_info" disabled></textarea>
+        </div>
+    
+        <div class="row mb-4">
+            <div class="col-4 text-left">
+                <label class="labelInforTab"><%= __('Install date')%></label>
+                <input type="date" class="form-control" id="install_date" autocomplete="off" disabled>
+            </div>
+            <div class="col-4 text-left">
+                <label class="labelInforTab"><%= __('Inspection date')%></label>
+                <input type="date" class="form-control" id="inspection_date" autocomplete="off" disabled>
+            </div>
+            <div class="col-4 text-left">
+                <label class="labelInforTab"><%= __('Install loger date')%></label>
+                <input type="date" class="form-control" id="loger_install_date" placeholder="yyyy-mm-dd" autocomplete="off" disabled>
+            </div>
+        </div>
+    <% } %>
+</div>
+<div class="modal-footer">
+    <% if(role == "admin" || role == "admin_client"){ %>
+    <button class="btn btn-success" onclick="save_info()"><%= __('Save')%></button>
+    <% } %>
+</div>

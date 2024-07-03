@@ -1,0 +1,47 @@
+<% if(role == "admin" || role == "admin_client"){ %>
+    <div style="min-height: 500px;" class="mr-2 ml-2">
+        <div class="row mt-3">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input mt-1" type="checkbox" value="" id="show_bar_to_m">
+                <label class="form-check-label font-weight-bold" for="show_bar_to_m">
+                    <%= __('Show unit Bar to M')%>
+                </label>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-6 text-left">
+                <label class="labelInforTab"><%= __('Conversion factor')%></label>
+                <input type="number" class="form-control" id="conver_factor">
+            </div>
+            <div class="col-6 text-left">
+                <label class="labelInforTab"><%= __('Compensation factor')%></label>
+                <input type="number" class="form-control" id="compen_factor">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" onclick="save_setting_conversion()"><%= __('Save setting conversion')%></button>
+    </div>
+<% }else{ %>
+    <div style="min-height: 500px;" class="mr-2 ml-2">
+        <div class="row mt-3">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input mt-1" type="checkbox" value="" id="show_bar_to_m" disabled>
+                <label class="form-check-label font-weight-bold" for="show_bar_to_m">
+                    <%= __('Show unit Bar to M')%>
+                </label>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-6 text-left">
+                <label class="labelInforTab"><%= __('Conversion factor')%></label>
+                <input type="number" class="form-control" id="conver_factor" disabled>
+            </div>
+            <div class="col-6 text-left">
+                <label class="labelInforTab"><%= __('Compensation factor')%></label>
+                <input type="number" class="form-control" id="compen_factor" disabled>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer"></div>
+<% } %>

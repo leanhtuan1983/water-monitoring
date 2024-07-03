@@ -1,0 +1,302 @@
+<div class="table-responsive mt-3" style="min-height: 700px;">
+    <div class="container">
+        <div class="row" style="align-items: center;">
+            <div class="col-lg-2 col-md-2 col-sm-2"></div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-3">
+                <label for="total_group_name" class="total_e">
+                    <%= __('Total group')%> :
+                </label>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4 col-7 mt-1">
+                <div>
+                    <input type="text" class="form-control" id="total_group_name_1"
+                        style="color: black; font-size: 14px !important" disabled>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-3 col-sm-3 col-2">
+                <a type="button" data-toggle="modal" data-target="#modeGroup_total"
+                    style="float: left; padding-right: 10px;" title="<%= __('edit')%>"><i class="fas fa-edit fa-2x"
+                        style="color: #007bff;"></i>
+                </a>
+                <a type="button" data-toggle="modal" data-target="#MapModal" style="float: left;"><i
+                        class="fas fa-map-marker-alt fa-2x" style="color: #007bff;" title="<%= __('total map')%>"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modeGroup_total">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <%= __('Edit group total')%>
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col-1 mt-1">
+                                <label for="total_group_id" style="color: black;">Id</label>
+                            </div>
+                            <div class="col-7">
+                                <input type="text" class="form-control" name="total_group_id" id="total_group_id"
+                                    style="color: #6e707e;" disabled>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-2"></div>
+                            <div class="col-1 mt-1">
+                                <label for="group_name" style="color: black;">
+                                    <%= __('Total group')%>
+                                </label>
+                            </div>
+                            <div class="col-7">
+                                <input type="text" class="form-control" name="total_group_name" id="total_group_name"
+                                    style="color: #6e707e;">
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-xl-1 col-lg-1 col-md-1"></div>
+                            <div class="col-xl-7 col-lg-6 col-md-4"></div>
+                            <div class="col-xl-2 col-lg-3 col-md-5 mt-1">
+                                <button type="button" class="btn btn-primary" onclick="Update_Total_group()">
+                                    <%= __('Update')%>
+                                </button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                    <%= __('Cancel')%>
+                                </button>
+                            </div>
+                            <div class="col-xl-2 col-lg-3 col-md-3"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="MapModal">
+        <div class="modal-dialog" style="max-width: 75%; min-height: 850px;">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <%= __('Map')%>
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <h3>
+                            <%= __('Show map')%>
+                        </h3>
+                        <div id="map" style="height: 620px; width: 100%;"></div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-10"></div>
+                    <div class="col-2 mt-1">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">
+                            <%= __('Cancel')%>
+                        </button>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">+
+                        <%= __('Add group')%>
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col-1 mt-1">
+                                <label for="group_name" style="color: black;">
+                                    <%= __('Group name')%>
+                                </label>
+                            </div>
+                            <div class="col-7">
+                                <input type="text" class="form-control" id="group_name" name="group_name"
+                                    style="color: #6e707e;">
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-xl-1 col-md-1"></div>
+                            <div class="col-xl-7 col-lg-6 col-md-4"></div>
+                            <div class="col-xl-2 col-lg-3 col-md-5 mt-1">
+                                <button type="button" class="btn btn-primary" onclick="Add_group()">
+                                    <%= __('Add')%>
+                                </button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                    <%= __('Cancel')%>
+                                </button>
+                            </div>
+                            <div class="col-xl-2 col-lg-3 col-md-3"></div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"
+            style="float: left;font-weight: bold;">+ <%= __('Add group')%>
+        </button>
+    </div>
+    <div class="tb_color tb_group">
+        <div class="table-responsive mt-3 pr-3 pl-3">
+            <table id="table_group" class="table table-hover text-center " style="width:100%;">
+                <thead>
+                    <tr class="titleRow">
+                        <th>
+                            <%= __('Index')%>
+                        </th>
+                        <th>Id &nbsp;</th>
+                        <th>
+                            <%= __('Group')%>
+                        </th>
+                        <th>
+                            <%= __('Active')%>
+                        </th>
+                        <th>
+                            <%= __('Setting')%>
+                        </th>
+
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <br>
+
+    <div class="modal fade" id="modelEdit">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <%= __('Edit group')%>
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="container">
+                        = <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col-1 mt-1">
+                                <label for="group_name" style="color: black;">ID</label>
+                            </div>
+                            <div class="col-7">
+                                <input type="text" class="form-control" id="id" name="id" style="color: #6e707e;"
+                                    disabled>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-2"></div>
+                            <div class="col-1 mt-1">
+                                <label for="group_name" style="color: black;">
+                                    <%= __('Group name')%>
+                                </label>
+                            </div>
+                            <div class="col-7">
+                                <input type="text" class="form-control" id="update_name" name="group_name"
+                                    style="color: #6e707e;">
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-xl-1 col-lg-1 col-md-1"></div>
+                            <div class="col-xl-7 col-lg-6 col-md-4"></div>
+                            <div class="col-xl-2 col-lg-3 col-md-5 mt-1">
+                                =
+                                <button type="button" class="btn btn-primary" onclick="Update_group()">
+                                    <%= __('Update')%>
+                                </button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                    <%= __('Cancel')%>
+                                </button>
+                            </div>
+                            <div class="col-xl-2 col-lg-3 col-md-3"></div>
+                        </div>
+
+                        =
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    = <div class="modal fade" id="modelMap_detail">
+        <div class="modal-dialog" style="max-width: 75%; min-height: 850px;">
+            <div class="modal-content">
+
+                = <div class="modal-header">
+                    <h4 class="modal-title">
+                        <%= __('Show map detail')%>
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                = <div class="modal-body">
+                    <div class="container-fluid">
+                        = <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col-1 mt-1">
+                                <label for="group_name" style="color: black;">ID</label>
+                            </div>
+                            <div class="col-7">
+                                <input type="text" class="form-control" id="id_map_detail" name="id_map_detail"
+                                    style="color: #6e707e;" disabled>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div id="mapn" style="height: 620px; width: 100%;"></div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-10"></div>
+                            <div class="col-2 mt-1">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                    <%= __('Cancel')%>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

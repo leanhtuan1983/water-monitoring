@@ -1,0 +1,101 @@
+<!-- <div>hiển thị biểu đồ</div> -->
+<div name="settingChart" class="mt-2">
+
+    <div class="row">
+        <!-- <div class="col-2 text-left">
+            <label class="labelInforTab"><%= __('Time')%></label>
+            <select class="custom-select  " id="select_time_chart">
+                    <option value="24hour"><%= __('24 hours')%></option>
+                    <option value="week"><%= __('1 week')%></option>
+                    <option value="month"><%= __('1 month')%></option>
+                    <option value="custom" id="custome_time_chart"><%= __('custom')%></option>
+                </select>
+        </div>
+
+        <div class="col-3 mt-2">
+            <input type="text" name="datetimes" class="form-control  mt-4" id="pick_time_chart" style="display:none;" autocomplete="off" />
+        </div>
+        <div class="col-1 text-left">
+            <label class="labelInforTab"><%= __('Moment')%></label>
+            <select class="custom-select  " id="select_moment_chart">
+                    <option value="raw"><%= __('Raw')%></option>
+                    <option value="30minute"><%= __('30 minute')%></option>
+                    <option value="hour"><%= __('Hour')%></option>
+                    <option value="day"><%= __('Day')%></option>
+                    <option value="week"><%= __('Week')%></option>
+                    <option value="month"><%= __('Month')%></option>
+                    <option value="year"><%= __('Year')%></option>
+                </select>
+        </div> -->
+        <div class="col-2 text-left">
+            <label class="labelInforTab"><%= __('From')%></label>
+            <input class="form-control" type="text" autocomplete="off" id="pick_time_chart_from">
+        </div>
+        <div class="col-2 text-left">
+            <label class="labelInforTab"><%= __('To')%></label>
+            <input class="form-control" type="text" autocomplete="off" id="pick_time_chart_to">
+        </div>
+        <div class="col-2 text-left">
+            <label class="labelInforTab"><%= __('Type of chart')%></label>
+            <select class="custom-select  " id="typeChart">
+                    <option value="line"><%= __('Slide')%></option>
+                    <option value="bar"><%= __('Bar')%></option>
+                    <option value="point"><%= __('Point')%></option>
+                </select>
+        </div>
+        <div class="col-2 text-left">
+            <label class="labelInforTab"><%= __('Select parameter')%></label>
+            <div class="dropdown">
+                <button class="btn  dropdown-toggle" style="width: 100%; border: solid 1px gray;" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <%= __('Select parameter')%>
+                    </button>
+                <ul class="dropdown-menu checkbox-menu allow-focus pl-3" aria-labelledby="dropdownMenu2">
+                    <li class="wt"><label><input type="checkbox" class="selectParaExport"
+                                    value="pressure" id="selectParaExportpressure"><%= __('Pressure')%></label>
+                    </li>
+                    <li class="wt"><label><input type="checkbox" class="selectParaExport"
+                                    value="quanity" id="selectParaExportquanity"><%= __('Quanity')%></label>
+                    </li>
+                    <li class="wt"><label><input type="checkbox" class="selectParaExport"
+                                    value="flowRate" id="selectParaExportflowRate"><%= __('Flow rate')%></label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-2 text-left">
+            <label class="labelInforTab"><%= __('Custom color')%></label>
+            <div class="dropdown">
+                <button class="btn editFontSize dropdown-toggle" style="width: 70%; border: solid 1px gray;" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <%= __('Pick color')%>
+                    </button>
+                <ul class="dropdown-menu checkbox-menu allow-focus pl-3" aria-labelledby="dropdownMenu3" style="width: 350px !important;">
+                    <li class="wt"><input style="width: 20px" type="color" class="selectcolor" id="colorpressure">
+                        <%= __('Pressure')%>
+                    </li>
+                    <li class="wt"><input style="width: 20px" type="color" class="selectcolor" id="colorquanity">
+                        <%= __('Quanity')%>
+                    </li>
+                    <li class="wt"><input style="width: 20px" type="color" class="selectcolor" id="colorflowRate">
+                        <%= __('Flow rate')%>
+                    </li>
+                    <li style="float: right;" class="m-2"><button class="btn btn-sm btn-success" onclick="submitColor()"><%= __('Submit')%></button></li>
+                    <!-- <li class="wt"><label><input type="checkbox" class="selectcolor" value="Voltage" id="selectParaExportVoltage">Voltage</label></li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="col-2 text-left" style="margin-top: 30px">
+            <button type="button" class="btn btn-success mr-3" onclick="saveConfig()"><%= __('Save')%></button>
+            <button class="btn btn-success" onclick="submit_get_chart()"><%= __('Load data')%></button>
+        </div>
+    </div>
+</div>
+<div id="test12" style="width:100%;">
+    <!--   Hiển thị biểu đồ -->
+    <!-- <canvas id="chartMain" height="500px" width="750px" class="mt-3">    -->
+    <div id="chartMain" style=" min-height: 500px; width: 100%;"></div>
+</div>
+
+<div class="modal-footer">
+    <!-- <button class=" mr-3 btn btn-success" onclick="exportData()">Export data</button> -->
+    <!-- <button type="button" class="btn btn-success" onclick="saveConfig()"><%= __('Save')%></button> -->
+</div>

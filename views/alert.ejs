@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= __('Alert')%>
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- css -->
+    <link type="text/css" rel="stylesheet" href="/stylesheets/style.css">
+    <link type="text/css" rel="stylesheet" href="/stylesheets/alert.css">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <!-- Boostrap 4 -->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- button -->
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
+    <!-- chartjs -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script> -->
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3"></script>
+        <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.7"></script> -->
+
+    <!-- DataTable -->
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+    <!-- momentjs and daterangepicker -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+
+
+    <!-- <script src="./styleSource.js"></script> -->
+    <script src="/javascripts/alert.js"></script>
+
+    <!-- Custom CSS -->
+    <link href="/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/styleMenu.css">
+</head>
+
+<body>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#btn-show").click(function() {
+                $("#div1").toggle().css("display", block)
+            });
+        });
+    </script>
+
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+        <header class="topbar" data-navbarbg="skin5" style="position: fixed; width: 100%; top: -5px;">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                <div class="navbar-header" data-logobg="skin6">
+                    <a class="navbar-brand" href="/dashboard" style="order:2"></a>
+                    <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none" href="javascript:void(0)" style="text-decoration: none;"><i class="ti-menu ti-close"></i></a>
+                    <div class="btn-showad">
+                        <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav" id="btn-show">
+                            <span class="btn-icon-wrapper">
+                                <i class="fa fa-ellipsis-v fa-w-6"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div id="div1">
+                        <a class="nav-link dropdown-toggle navLink" data-toggle="dropdown" href="#" id="accountName" style="position: relative; top: -14px; float: right;">
+                            <%= name %>
+                                <i class="fas fa-sort-down"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right " style="min-height: 60px; position: absolute; right: 10px !important;">
+                            <a class="dropdown-item menuBarHover" href="/profile">
+                                <i class="fas fa-key"></i>
+                                <%= __('Change password')%>
+                            </a>
+                            <a class="dropdown-item menuBarHover" href="/logout">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <%= __('Logout')%>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5" style="padding-right: 20px;">
+                    <ul class="header-menu nav">
+                        <!-- <li class="nav-item">
+                            <a href="/dashboard" class="nav-link">
+                                <i class="nav-link-icon fa fa-database"> </i>
+                                <%= __('STATISTIC')%>
+                            </a>
+                        </li> -->
+                        <li class="btn-group nav-item">
+                            <a href="/source_3/all" class="nav-link ">
+                                <i class="nav-link-icon fa fa-edit"></i>
+                                <%= __('DATA TRACKING')%>
+                            </a>
+                        </li>
+                        <li class="dropdown nav-item">
+                            <a href="/alert" class="nav-link active">
+                                <i class="nav-link-icon fa fa-table"></i>
+                                <%= __('ALERTS')%>
+                            </a>
+                        </li>
+                        <!-- <li class="dropdown nav-item">
+                            <a href="/report" class="nav-link">
+                                <i class="nav-link-icon fa fa-paste"></i>
+                                <%= __('REPORT')%>
+                            </a>
+                        </li> -->
+                        <% if(role == "admin" || role == "admin_client"){ %>
+                        <li class="dropdown nav-item">
+                            <a href="/admin" class="nav-link">
+                                <i class="nav-link-icon fas fa-user"></i> 
+                                <%= __('USER MANAGE')%>
+                            </a>
+                        </li>
+                        <% } %>
+                    </ul>
+
+                    <ul class="navbar-nav ms-auto d-flex align-items-center">
+                        <li>
+                            <a href="/change-lang/vi" class="m-2"><span class="flag-icon flag-icon-vn "></span></a>
+                            <a href="/change-lang/en" class="m-2"><span class="flag-icon flag-icon-us "></span></a>
+                        </li>
+                        <li>
+                            <a class="nav-link dropdown-toggle navLink" data-toggle="dropdown" href="#" id="accountName">
+                                <%= name %>
+                                <i class="fas fa-sort-down"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right " style="min-height: 60px; position: absolute; right: 10px !important;">
+                                <a class="dropdown-item menuBarHover" href="/profile">
+                                    <i class="fas fa-key"></i>
+                                    <%= __('Change password')%>
+                                </a>
+                                <a class="dropdown-item menuBarHover" href="/logout">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <%= __('Logout')%>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="left-sidebar" data-sidebarbg="skin6" style="display: none">
+            <div class="scroll-sidebar">
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <!-- <li class="sidebar-item pt-2">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/dashboard" aria-expanded="false">
+                                <i class="fa fa-database" aria-hidden="true"></i>
+                                <span class="hide-menu">
+                                    <%= __('STATISTIC')%>
+                                </span>
+                            </a>
+                        </li> -->
+                        <li class="sidebar-item pt-2">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/source_3/all" aria-expanded="false">
+                                <i class="fa fa fa-edit" aria-hidden="true"></i>
+                                <span class="hide-menu">
+                                    <%= __('DATA TRACKING')%>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/alert" aria-expanded="false">
+                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <span class="hide-menu">
+                                    <%= __('ALERTS')%>
+                                </span>
+                            </a>
+                        </li>
+                        <!-- <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/report" aria-expanded="false">
+                                <i class="fa fa-paste" aria-hidden="true"></i>
+                                <span class="hide-menu">
+                                    <%= __('REPORT')%>
+                                </span>
+                            </a>
+                        </li> -->
+                        <% if(role == "admin" || role == "admin_client"){ %>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin" aria-expanded="false">
+                                <i class="fas fa-user" aria-hidden="true"></i>
+                                <span class="hide-menu"><%= __('USER MANAGE')%></span>
+                            </a>
+                        </li>
+                        <% } %>
+                    </ul>
+
+                </nav>
+            </div>
+        </aside>
+    </div>
+    <div name="contentContainer" class="container-fluid mt-2" style="position: relative; top: 50px;">
+        <div name="contentContainer" class="container-fluid mt-2">
+            <div name="tableBar" class="mt-5">
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-2 row mt-4 total_e">
+                        <Span id="totalAlert"></Span>
+                    </div>
+                    <div class="col-row-2 mt-4 btn-e">
+                        <button class="btn btn-success btn-e" onclick="refreshTable()">
+                            <%= __('Refresh data')%>
+                        </button>
+                    </div>
+                    <!-- <div class="col-row-2 mt-4 ml-3">
+                            <button class="btn btn-success btn-sm" onclick="" id="settingSendAlert">Setting send alert</button>
+                        </div> -->
+                    <div class="col-row-2 ml-4" style="position: relative; top: -10px;">
+                        <label style="float: left; font-weight: bold;">
+                            <%= __('Time')%>
+                        </label>
+                        <select class="custom-select editFontSize " id="selectTimeAlert">
+                            <option value="week">
+                                <%= __('1 week')%>
+                            </option>
+                            <option value="month">
+                                <%= __('1 month')%>
+                            </option>
+                            <option value="custom" id="customTimeMultiAlert">
+                                <%= __('custom')%>
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-row-4 ml-4">
+                        <input type="text" name="datetimes" class="form-control editFontSize mt-4" id="picktimeAlert" style="display:none;">
+                    </div>
+                    <div class="col-row-3 ml-4" style="position: relative; top: 20px;">
+                        <!-- <label style="float: left; font-weight: bold;">
+                            <%= __('Select parameter')%>
+                        </label> -->
+
+                        <div class="dropdown">
+                            <button class="btn editFontSize dropdown-toggle" style="width: 100%; border: solid 1px gray;" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <%= __('Select parameter')%>
+                                    <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu checkbox-menu allow-focus pl-3" aria-labelledby="dropdownMenu3">
+                                <li class="selectParaAlertwt"><label><input type="checkbox" class="selectParaAlert wt"
+                                            value="APSUAT" id="selectParaAlertpressure">
+                                        <%= __('Pressure')%>
+                                    </label></li>
+                                <li class="selectParaAlertwt"><label><input type="checkbox" class="selectParaAlert wt"
+                                            value="SL" id="selectParaAlertquanity">
+                                        <%= __('Quanity')%>
+                                    </label></li>
+                                <li class="selectParaAlertwt"><label><input type="checkbox" class="selectParaAlert wt"
+                                            value="OP" id="selectParaAlertflowRate">
+                                        <%= __('Flow rate')%>
+                                    </label></li>
+                                <li class="selectParaAlertwt"><label><input type="checkbox" class="selectParaAlert wt"
+                                        value="LOST" id="selectParaAlertlost_data">
+                                    <%= __('Lost data')%>
+                                </label></li>
+                                <li class="selectParaAlertwt"><label><input type="checkbox" class="selectParaAlert wt"
+                                    value="PIN" id="selectParaAlertvoltage_pin">
+                                <%= __('Pin voltage')%>
+                            </label></li>
+                            <li class="selectParaAlertwt"><label><input type="checkbox" class="selectParaAlert wt"
+                                value="ACQUY" id="selectParavoltage_ac_quy">
+                            <%= __('Battery voltage')%>
+                        </label></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-row-3 ml-4 mt-4" style="position: relative; top: -5px;">
+                        <button class="btn btn-success mr-2"  onclick="filter()">
+                            <%= __('Submit')%>
+                        </button>
+                        <button class="btn btn-success" onclick="export_alert()">
+                            <i class="fas fa-download"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="tableal">
+                <div class="table-responsive mt-3 pr-5 pl-5" style="min-height: 700px;">
+                    <table id="tableAlert" class="table table-border-dd text-center" style="width:100%">
+                        <thead>
+                            <tr class="titleRow">
+                                <th style="min-width: 3%;">
+                                    STT
+                                </th>
+                                <th>
+                                    <%= __('Alert time')%>
+                                </th>
+                                <th>
+                                    <%= __('Meter id')%>
+                                </th>
+                                <th style="min-width: 12%;">
+                                    <%= __('Name')%>
+                                </th>
+                                <th>
+                                    <%= __('Alert type')%>
+                                </th>
+                                <th style="min-width: 12%;">
+                                    <%= __('Threshold')%>
+                                </th>
+                                <th>
+                                    <%= __('Value')%>
+                                </th>
+                                <th>
+                                    <%= __('Seria sensor')%>
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="/js/custom.js"></script>
+    <!--This page JavaScript -->
+    <!-- <script src="/js/pages/dashboards/dashboard1.js"></script> -->
+</body>
+
+</html>

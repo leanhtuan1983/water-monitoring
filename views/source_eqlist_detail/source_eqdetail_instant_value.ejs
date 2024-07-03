@@ -1,0 +1,72 @@
+<!-- <div>Hiển thị giá trị tức thời</div> -->
+<div id="informationTab" class="container-fluid tab-pane ">
+    <div style="min-height: 500px;">
+        <div class="row mb-4">
+            <div class="col-4 text-left">
+                <label class="labelInforTab"><%= __('METER ID')%></label>
+                <input type="text" class="form-control" disabled id="ins_val_idEQ" autocomplete="off">
+            </div>
+            <div class="col-4 text-left">
+                <label class="labelInforTab"><%= __('NAME METER')%></label>
+                <input type="text" class="form-control"  id="ins_val_nameEQ" disabled autocomplete="off">
+            </div>
+            <div class="col-4 text-left">
+                <label class="labelInforTab"><%= __('LAST DATA TIME')%></label>
+                <input type="text" class="form-control" disabled id="ins_val_LDD" autocomplete="off">
+            </div>
+
+        </div>
+        <div class="row mb-4">
+            <div class="col-4 text-left">
+                <label class="labelInforTab"><%= __('INDICATOR')%></label>
+                <input type="text" class="form-control" id="ins_val_ValOfnum" disabled autocomplete="off">
+            </div>
+            <div class="col-4 text-left">
+                <label class="labelInforTab"><%= __('PIN VOLTAGE')%></label>
+                <input type="text" class="form-control" disabled id="ins_val_pin_vol" autocomplete="off">
+            </div>
+            <div class="col-4 text-left">
+                <label class="labelInforTab"><%= __('BATTERY VOLTAGE')%></label>
+                <input type="text" class="form-control" disabled id="ins_val_vol_ac_quy" autocomplete="off">
+            </div>
+
+
+
+        </div>
+        <div class="row mb-4">
+            <div class="col-4 text-left">
+                <label class="labelInforTab"><%= __('PRESSURE')%></label>
+                <input type="text" class="form-control" disabled id="ins_val_pressure" autocomplete="off">
+            </div>
+            <div class="col-4 text-left">
+                <label class="labelInforTab"><%= __('FLOW RATE')%></label>
+                <input type="text" class="form-control" disabled id="ins_val_flow_rate" autocomplete="off">
+            </div>
+            <div class="col-4 text-left">
+                <label class="labelInforTab"><%= __('QUANITY')%></label>
+                <input type="text" class="form-control" disabled id="ins_val_quanity" autocomplete="off">
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-4 text-left">
+                <label class="labelInforTab"><%= __('MEASURE VALUE LEVEL')%></label>
+                <input type="text" class="form-control" disabled id="ins_measure_sensor" autocomplete="off">
+            </div>
+            <div class="col-4 text-left">
+                <label class="labelInforTab"><%= __('WAVE CURRENT')%></label>
+                <input type="text" class="form-control" disabled id="ins_wave_current" autocomplete="off">
+            </div>
+            <div class="col-4 text-left">
+                <label class="labelInforTab"><%= __('FREQUENCY')%></label>
+                <input type="text" class="form-control" disabled id="ins_val_frequency" autocomplete="off">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" onclick="refresh_instam_val()"><%= __('Refresh')%></button>
+    </div>
+</div>
+
+
+

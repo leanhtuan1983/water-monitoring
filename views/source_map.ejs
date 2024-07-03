@@ -1,0 +1,125 @@
+<h3><%= __('Show map')%></h3>
+<div id="map" style="height: 700px; width: 100%;"></div>
+<script>
+    // chỗ này viết code js của file source_map.ejs
+
+function httpAsync(postData, url, method, callback) {
+    let xmlHttp = new XMLHttpRequest();
+    xmlHttp.open(method, url, true);
+    xmlHttp.setRequestHeader("Content-type", "application/json");
+    xmlHttp.send(JSON.stringify(postData));
+    xmlHttp.onload = function () {
+        if (xmlHttp.readyState === xmlHttp.DONE) {
+            if (xmlHttp.status === 200) {
+                callback(xmlHttp.responseText);
+            }
+        }
+    }
+}
+
+
+$(document).ready(function () {
+    get_map_list();
+})
+
+
+
+function get_map_list() {
+    httpAsync(null, "/map/get_map_list", "GET", function (result) {
+        let data = [];
+        if (result == "" | result == null) {
+            initMap(data);
+        } else {
+            data = JSON.parse(result);
+            initMap(data);
+        }
+        console.log(result)
+    })
+}
+
+function initMap(data) {
+    // map options
+    var options = {
+        zoom: 12,
+        center: { lat: 21.028511, lng: 105.804817 }
+    };
+
+    // New map
+    var map = new google.maps.Map(document.getElementById("map"), options);
+
+    //Add marker
+    for (var i = 0; i < data.length; i++) {
+        var coords = { lat: data[i].location_lat, lng: data[i].location_long };
+        console.log(data.length);
+        if (data[i].status==1) {
+            var marker = new google.maps.Marker({
+                position: coords,
+                map: map,
+                animation: google.maps.Animation.DROP,
+                // icon: /images/ + data[i].icon
+                icon : return_icon(data[i].status)
+            });
+        } else {
+            var marker = new google.maps.Marker({
+                position: coords,
+                map: map,
+                animation: google.maps.Animation.DROP,
+                // icon: /images/ + data[i].icon
+                icon : return_icon(data[i].status)
+            });
+        }
+        function return_icon(status){
+            if(status==1){
+                return "/images/small-connect.png";
+            }else{
+                return "/images/small-disconnect.png";
+            }
+        }
+
+        marker['infowindow'] = new google.maps.InfoWindow({
+            content: '<p>' + data[i].name + '</p>' + '<p>' + data[i].last_data_time + '</p>' + '<p>' + data[i].address + '</p>'
+        });
+
+        google.maps.event.addListener(marker, 'click', function () {
+            this['infowindow'].open(map, this);
+        });
+
+
+        // //Array of marker
+        // var markers = [
+        //     {
+        //         coords: { lat: data[i].lat, lng: data[i].lng },
+        //         content: data[i].content,
+        //         iconImage: data[i].icon
+        //     }
+        // ];
+        // //Loop through markers
+        // for (var i = 0; i < markers.length; i++) {
+        //     //Add markers
+        //     addMarker(markers[i]);
+
+
+        // }
+        // //Add Marker Function
+        // function addMarker(props) {
+        //     var marker = new google.maps.Marker({
+        //         position: props.coords,
+        //         map: map,
+        //         icon: props.iconImage
+        //     });
+        //     if (props.content) {
+        //         var infoWindow = new google.maps.InfoWindow({
+        //             content: props.content
+        //         });
+        //         marker.addListener('click', function () {
+        //             infoWindow.open(map, marker);
+        //         });
+        //     }
+        // }
+
+    }
+
+}
+
+
+</script>

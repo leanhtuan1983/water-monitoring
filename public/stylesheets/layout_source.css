@@ -1,0 +1,41 @@
+
+/* .bg_gray_dd{
+    background-color: #f3f3f3 !important;
+} */
+
+.bg_white_dd{
+    background-color: #ffffff !important;
+}
+
+.border_radius{
+    border: 1px solid #c5c5c5 !important;
+    border-radius: 5px !important;
+}
+
+.label_for_input{
+    width: 100%;
+    color: rgb(131, 131, 131);
+    float: left;
+    font-weight: bold;
+    font-size: 95%;
+}
+
+.margin_4{
+    margin: 15px !important;
+    padding: 7px !important;
+}
+
+.margin_2{
+    margin: 15px 0px 0px 15px !important;
+    padding: 7px !important;
+}
+
+.margin_3{
+    margin: 15px 15px 0px 15px !important;
+    padding: 7px !important;
+}
+
+/* .margin_4_{
+    margin: 15px 15px 15px 15px !important;
+    padding: 7px;
+} */

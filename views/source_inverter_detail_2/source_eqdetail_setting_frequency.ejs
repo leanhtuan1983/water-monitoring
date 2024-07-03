@@ -1,0 +1,101 @@
+<div>
+    <div class="row mt-5">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <table class="table table-bordered .table-responsive" style="border: 1px solid black; border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th style="border: 1px solid black;"><%= __('Index')%></th>
+                        <th style="border: 1px solid black;"><%= __('Pressure low threshold')%> (Bar)</th>
+                        <th style="border: 1px solid black;"><%= __('Pressure high threshold')%> (Bar)</th>
+                        <th style="border: 1px solid black;"><%= __('Frequency')%> (Hz)</th>
+                    </tr>
+                </thead>
+                <% if(role == "admin" || role == "admin_client"){ %>
+                    <tbody>
+                        <tr>
+                            <th style="border: 1px solid black;">1</th>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__lower_1" class="form-control"  ></td>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__over_1" class="form-control" ></td>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__value_1" class="form-control" ></td>
+                        </tr>
+                        <tr>
+                            <th style="border: 1px solid black;">2</th>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__lower_2" class="form-control"></td>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__over_2" class="form-control"></td>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__value_2" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <th style="border: 1px solid black;">3</th>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__lower_3" class="form-control"></td>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__over_3" class="form-control"></td>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__value_3" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <th style="border: 1px solid black;">4</th>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__lower_4" class="form-control"></td>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__over_4" class="form-control"></td>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__value_4" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <th style="border: 1px solid black;">5</th>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__lower_5" class="form-control"></td>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__over_5" class="form-control"></td>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__value_5" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <th style="border: 1px solid black;">6</th>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__lower_6" class="form-control"></td>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__over_6" class="form-control"></td>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__value_6" class="form-control"></td>
+                        </tr>
+                    </tbody>
+                <% }else{ %>
+                    <tbody>
+                        <tr>
+                            <th style="border: 1px solid black;">1</th>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__lower_1" class="form-control" disabled></td>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__over_1" class="form-control" disabled></td>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__value_1" class="form-control" disabled></td>
+                        </tr>
+                        <tr>
+                            <th style="border: 1px solid black;">2</th>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__lower_2" class="form-control" disabled></td>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__over_2" class="form-control" disabled></td>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__value_2" class="form-control" disabled></td>
+                        </tr>
+                        <tr>
+                            <th style="border: 1px solid black;">3</th>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__lower_3" class="form-control" disabled></td>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__over_3" class="form-control" disabled></td>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__value_3" class="form-control" disabled></td>
+                        </tr>
+                        <tr>
+                            <th style="border: 1px solid black;">4</th>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__lower_4" class="form-control" disabled></td>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__over_4" class="form-control" disabled></td>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__value_4" class="form-control" disabled></td>
+                        </tr>
+                        <tr>
+                            <th style="border: 1px solid black;">5</th>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__lower_5" class="form-control" disabled></td>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__over_5" class="form-control" disabled></td>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__value_5" class="form-control" disabled></td>
+                        </tr>
+                        <tr>
+                            <th style="border: 1px solid black;">6</th>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__lower_6" class="form-control" disabled></td>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__over_6" class="form-control" disabled></td>
+                            <td style="border: 1px solid black;"><input type="number" id="inverter_fre__value_6" class="form-control" disabled></td>
+                        </tr>
+                    </tbody>
+                <% } %>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <% if(role == "admin" || role == "admin_client"){ %>
+    <button class="btn btn-success" onclick="save_setting_amperage_inverter()"><%= __('Save')%></button>
+    <% } %>
+</div>

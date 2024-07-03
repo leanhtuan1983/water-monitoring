@@ -1,0 +1,61 @@
+body {
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+#sidebar {
+  position: fixed;
+  top: calc(55px);
+  left: 0;
+  height: calc(100% - 55px);
+  width: 280px;
+  background-color: #343a40;
+  color: #fff;
+  border-right: 1px solid #a5a5a5;
+  /* padding: 20px; */
+  transition: all 0.3s ease;
+  overflow-y: auto; /* Thêm thanh trượt khi nội dung quá dài */
+  overflow-x: auto;
+}
+.page_ {
+  transition: all 0.3s ease;
+  margin-left: 280px; /* Mặc định nội dung sẽ hiển thị cùng với side bar */
+}
+.sidebar-toggle-btn {
+  position: absolute;
+  top: 20px;
+  left: 80px;
+  /* right: 20px; Đưa nút bấm ra ngoài side bar */
+  z-index: 999;
+  cursor: pointer;
+}
+.sidebar-toggle-btn span {
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-color: #f8f9fa;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40px;
+}
+.sidebar-toggle-btn span::before {
+  content: "\2630";
+  font-size: 20px;
+}
+@media (max-width: 767px) {
+  #sidebar {
+    width: 0;
+  }
+  .page_ {
+    margin-left: 0; /* Đảm bảo rằng nội dung không bị ẩn khi side bar ẩn đi */
+  }
+  /* Side bar đè lên content khi hiện */
+  #sidebar.overlay {
+    z-index: 999;
+  }
+  .sidebar-toggle-btn {
+    right: 0px;
+  }
+}
+
+.page_ {
+  margin-top: 48px;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= __('Register Page')%></title>
+	<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<!-- <script src="http://malsub.github.com/jquery.form.js"></script> -->
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
+	<script src="/javascripts/register.js"></script>
+</head>
+<body>
+<div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card2" style="height: 550px !important;" >
+			<div class="card-header">
+				<h3><%= __('Register')%></h3>
+			</div>
+			<div class="card-body" style="height:  400px !important;">
+				<div class="alert alert-danger" style="display: none" id="miss_val_err"></div>
+				<%if(message.error && message.error.length > 0){%>
+					<div class="alert alert-danger"><%=message.error%></div>
+				<%}%>
+				<form action="/user/register" method="POST" id="post_register">
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
+						</div>
+						<input type="text" class="form-control" placeholder="<%= __('Email address')%>" name="email" id="email_">
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" class="form-control" placeholder="<%= __('User name')%>" name="username" id="user_name">
+						
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" class="form-control" placeholder="<%= __('Password')%>" name="password" id="pass_word">
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-check"></i></span>
+						</div>
+						<input type="password" class="form-control" placeholder="<%= __('Confirm Password')%>" name="cfpassword" id="cf_pass_word">
+						<span id='message' class="mt-2 ml-2"></span>
+					</div>
+					<div class="form-group">
+						<!-- <button class="btn float-right login_btn" onclick="resign()" id="addAcBtn">Register</button> -->
+                            <input type="submit" value="<%= __('Register')%>" class="btn float-right login_btn">
+					</div>
+				</form>
+			</div>
+			<div class="card-footer">
+				<div class="d-flex justify-content-center mt-3">
+					<a href="/login"><%= __('Have account? Login now')%></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<!-- <script>
+	let resign = ()=>{
+		var pass1 = document.getElementById('pwd').value;
+		var pass2 = document.getElementById('cfpwd').value;
+		if(pass1 != pass2){
+			alert("password confirm wrong!")
+			location.reload();
+		}
+	}
+</script> -->
+</html>

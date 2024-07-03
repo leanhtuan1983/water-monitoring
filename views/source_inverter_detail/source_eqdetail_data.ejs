@@ -1,0 +1,47 @@
+<div class="mt-2">
+    <div class="row">
+        <div class="col-4 text-left">
+            <label class="labelInforTab"><%= __('From')%></label>
+            <input class="form-control" type="text" autocomplete="off" id="time_from_inverter">
+        </div>
+        <div class="col-4 text-left">
+            <label class="labelInforTab"><%= __('To')%></label>
+            <input class="form-control" type="text" autocomplete="off" id="time_to_inverter">
+        </div>
+        <div class="col-2 text-left"></div>
+        <div class="col-2">
+            <button class="btn btn-success mt-4" style="position: relative; top: 10px;" onclick="submit_getDataEQ_inverter()"><%= __('Load data')%></button>
+        </div>
+    </div>
+</div>
+<div class="table-responsive mt-3" style="min-height: 500px;">
+    <table id="table_data_inverter" class="table text-center " style="width:100%">
+        <thead>
+            <tr class="titleRow">
+                <th style="width: 7%;">
+                    <%= __('Index')%> &nbsp;</th>
+                <th style="width: 20%;">
+                    <%= __('Time')%>
+                </th>
+                <th>
+                    <%= __('Pressure')%> (bar)
+                </th>
+                <th>
+                    <%= __('Current frequency')%> (Hz)
+                </th>
+                <th>
+                    <%= __('Inverter comunicate')%>
+                </th>
+                <th>
+                    <%= __('Pin voltage')%> (V)
+                </th>
+                <th>
+                    <%= __('Battery voltage')%> (V)
+                </th>
+            </tr>
+        </thead>
+    </table>
+</div>
+<div class="modal-footer">
+    <button class=" mr-3 btn btn-success" onclick="export_data_inverter()"><%= __('Export data')%></button>
+</div>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+	
+	<script src="/javascripts/login.js"></script>
+</head>
+<body>
+<div class="container">
+	<!-- <a class="btn btn-success btn-sm" href="/change-lang/en">English</a>
+	<a class="btn btn-success btn-sm" href="/change-lang/vi">Vietnamese</a>  -->
+	<div class="d-flex justify-content-center h-100">
+		<div class="card" style="height: 500px !important;">
+			<div class="card-header">
+				<h3><%= __('Login') %></h3>
+			</div>
+			<div class="card-body" style="height: 400px;">
+				<div class="alert alert-danger" id="miss_val_err" style="display: none"></div>
+				<%if(message.error && message.error.length > 0){%>
+					<div class="alert alert-danger"><%=message.error%></div>
+				<%}%>
+				<form action="/login" method="POST" id="post_login">
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" class="form-control" placeholder="<%= __('User name')%> " name="username" id="user_name">
+						
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" class="form-control" placeholder="<%= __('Password') %>" name="password" id="pass_word">
+					</div>
+					<div class="row align-items-center remember">
+						<input type="checkbox" name="remember"><%= __('Remember password')%>
+					</div>
+					<div class="form-group row float-right">
+						<!-- <img src="/images/vn.jpg" style="width: 30px"> -->
+						<a href="/change-lang/vi" class="float-right mt-2 mr-1"><span class="flag-icon flag-icon-vn "></span></a>
+						<a href="/change-lang/en" class="float-right mt-2 mr-2"><span class="flag-icon flag-icon-us"></span></a> 
+					
+                        <input type="submit" value="<%= __('Login')%>" class="btn float-right login_btn mr-4 mt-1">
+					</div>
+				</form>
+			</div>
+			<div class="card-footer">
+				<!-- <div class="d-flex justify-content-center links">
+				    <a href="/user/register"><%= __('Register')%></a>
+				</div>
+				<div class="d-flex justify-content-center">
+					<a href="/forgot_password"><%= __('Forgot password?')%></a>
+				</div>
+			</div> -->
+		</div>
+	</div>
+</div>
+</body>
+</html>

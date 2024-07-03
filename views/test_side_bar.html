@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Side Bar Example</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      overflow-x: hidden; /* Prevent horizontal scroll */
+    }
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 250px;
+      background-color: #333;
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+    #content {
+      transition: all 0.3s ease;
+      margin-left: 250px; /* Mặc định nội dung sẽ hiển thị cùng với side bar */
+    }
+    .sidebar-toggle-btn {
+      position: absolute;
+      top: 20px;
+      right: -40px; /* Đưa nút bấm ra ngoài side bar */
+      z-index: 999;
+      cursor: pointer;
+    }
+    .sidebar-toggle-btn span {
+      display: block;
+      width: 40px;
+      height: 40px;
+      background-color: #f8f9fa;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 40px;
+    }
+    .sidebar-toggle-btn span::before {
+      content: "\2630";
+      font-size: 20px;
+    }
+    @media (max-width: 767px) {
+      #sidebar {
+        width: 0;
+      }
+      #content {
+        margin-left: 0; /* Đảm bảo rằng nội dung không bị ẩn khi side bar ẩn đi */
+      }
+      /* Side bar đè lên content khi hiện */
+      #sidebar.overlay {
+        z-index: 999;
+      }
+      .sidebar-toggle-btn {
+        right: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="sidebar">
+  <button class="sidebar-toggle-btn" onclick="toggleSidebar()"><span></span></button>
+  <h2>Sidebar</h2>
+  <ul class="sidebar-list">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+</div>
+
+<div id="content">
+  <div class="container">
+    <h1>Main Content</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  </div>
+</div>
+
+<script>
+  function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const content = document.getElementById('content');
+    const sidebarListItems = document.querySelectorAll('.sidebar-list li');
+
+    if (sidebar.style.width === '250px' || window.getComputedStyle(sidebar).width === '250px') {
+      sidebar.style.width = '0';
+      content.style.marginLeft = '0';
+      sidebarListItems.forEach(item => item.style.display = 'none'); // Ẩn các thẻ list khi side bar ẩn
+      sidebar.classList.remove('overlay'); // Gỡ bỏ lớp overlay khi side bar ẩn
+    } else {
+      sidebar.style.width = '250px';
+      content.style.marginLeft = '250px';
+      sidebarListItems.forEach(item => item.style.display = 'block'); // Hiện các thẻ list khi side bar hiện
+      sidebar.classList.add('overlay'); // Thêm lớp overlay khi side bar hiện
+    }
+  }
+</script>
+
+</body>
+</html>

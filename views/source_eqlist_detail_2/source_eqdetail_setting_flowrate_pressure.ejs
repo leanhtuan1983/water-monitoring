@@ -1,0 +1,337 @@
+<% if(role == "admin" || role == "admin_client"){ %>
+    <div style="min-height: 500px;">
+        <div class="row">
+            <div class="col-6">
+                <table class="table table-bordered .table-responsive" id="flowRate_setting_table">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th><%= __('Start')%> [HH:mm (Giờ:phút)]</th>
+                            <th><%= __('End')%> [HH:mm (Giờ:phút)]</th>
+                            <th><%= __('Flow rate low threshold')%> (m3/h)</th>
+                            <th><%= __('Flow rate high threshold')%> (m3/h)</th>
+                        </tr>
+                        <tbody id="flowRate_table_data">
+                            <tr>
+                                <td id="plr_alcf_id_1">1</td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="plr_alcf_str_1"></td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="plr_alcf_end_1"></td>
+                                <td><input type="number" class="form-control" id="plr_alcf_low_1"></td>
+                                <td><input type="number" class="form-control" id="plr_alcf_high_1"></td>
+                            </tr>
+                            <tr>
+                                <td id="plr_alcf_id_2">2</td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="plr_alcf_str_2"></td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="plr_alcf_end_2"></td>
+                                <td><input type="number" class="form-control" id="plr_alcf_low_2"></td>
+                                <td><input type="number" class="form-control" id="plr_alcf_high_2"></td>
+                            </tr>
+                            <tr>
+                                <td id="plr_alcf_id_3">3</td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="plr_alcf_str_3"></td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="plr_alcf_end_3"></td>
+                                <td><input type="number" class="form-control" id="plr_alcf_low_3"></td>
+                                <td><input type="number" class="form-control" id="plr_alcf_high_3"></td>
+                            </tr>
+                            <tr>
+                                <td id="plr_alcf_id_4">4</td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="plr_alcf_str_4"></td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="plr_alcf_end_4"></td>
+                                <td><input type="number" class="form-control" id="plr_alcf_low_4"></td>
+                                <td><input type="number" class="form-control" id="plr_alcf_high_4"></td>
+                            </tr>
+                            <tr>
+                                <td id="plr_alcf_id_5">5</td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="plr_alcf_str_5"></td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="plr_alcf_end_5"></td>
+                                <td><input type="number" class="form-control" id="plr_alcf_low_5"></td>
+                                <td><input type="number" class="form-control" id="plr_alcf_high_5"></td>
+                            </tr>
+                            <tr>
+                                <td id="plr_alcf_id_6">6</td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="plr_alcf_str_6"></td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="plr_alcf_end_6"></td>
+                                <td><input type="number" class="form-control" id="plr_alcf_low_6"></td>
+                                <td><input type="number" class="form-control" id="plr_alcf_high_6"></td>
+                            </tr>
+                        </tbody>
+                    </thead>
+                </table>
+            </div>
+            <div class="col-6">
+                <table class="table table-bordered .table-responsive">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th><%= __('Start')%> [HH:mm (Giờ:phút)]</th>
+                            <th><%= __('End')%> [HH:mm (Giờ:phút)]</th>
+                            <th><%= __('Pressure low threshold')%> (Bar)</th>
+                            <th><%= __('Pressure high threshold')%> (Bar)</th>
+                        </tr>
+                        <tbody id="pressure_table_data">
+                            <tr>
+                                <td id ="press_alcf_id_1">1</td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="press_alcf_str_1"></td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="press_alcf_end_1"></td>
+                                <td><input type="number" class="form-control" id="press_alcf_low_1"></td>
+                                <td><input type="number" class="form-control" id="press_alcf_high_1"></td>
+                            </tr>
+                            <tr>
+                                <td id ="press_alcf_id_2">2</td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="press_alcf_str_2"></td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="press_alcf_end_2"></td>
+                                <td><input type="number" class="form-control" id="press_alcf_low_2"></td>
+                                <td><input type="number" class="form-control" id="press_alcf_high_2"></td>
+                            </tr>
+                            <tr>
+                                <td id ="press_alcf_id_3">3</td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="press_alcf_str_3"></td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="press_alcf_end_3"></td>
+                                <td><input type="number" class="form-control" id="press_alcf_low_3"></td>
+                                <td><input type="number" class="form-control" id="press_alcf_high_3"></td>
+                            </tr>
+                            <tr>
+                                <td id ="press_alcf_id_4">4</td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="press_alcf_str_4"></td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="press_alcf_end_4"></td>
+                                <td><input type="number" class="form-control" id="press_alcf_low_4"></td>
+                                <td><input type="number" class="form-control" id="press_alcf_high_4"></td>
+                            </tr>
+                            <tr>
+                                <td id ="press_alcf_id_5">5</td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="press_alcf_str_5"></td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="press_alcf_end_5"></td>
+                                <td><input type="number" class="form-control" id="press_alcf_low_5"></td>
+                                <td><input type="number" class="form-control" id="press_alcf_high_5"></td>
+                            </tr>
+                            <tr>
+                                <td id ="press_alcf_id_6">6</td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="press_alcf_str_6"></td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="press_alcf_end_6"></td>
+                                <td><input type="number" class="form-control" id="press_alcf_low_6"></td>
+                                <td><input type="number" class="form-control" id="press_alcf_high_6"></td>
+                            </tr>
+                        </tbody>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="row text-left mt-3 p-2">
+            <label class="labelInforTab"><%= __('Repreat')%></label>
+            <div class="text-left p-3" style="width: 100%; border: solid gray 1px;">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input fl_pr_checkbox mt-1" type="checkbox" value="" id="__2">
+                    <label class="form-check-label" for="__2">
+                      <%= __('Monday')%>
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input fl_pr_checkbox mt-1" type="checkbox" value="" id="__3">
+                    <label class="form-check-label" for="__3">
+                        <%= __('Tuesday')%>
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input fl_pr_checkbox mt-1" type="checkbox" value="" id="__4">
+                    <label class="form-check-label" for="__4">
+                        <%= __('Wednesday')%>
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input fl_pr_checkbox mt-1" type="checkbox" value="" id="__5">
+                    <label class="form-check-label" for="__5">
+                        <%= __('Thursday')%>
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input fl_pr_checkbox mt-1" type="checkbox" value="" id="__6">
+                    <label class="form-check-label" for="__6">
+                        <%= __('Friday')%>
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input fl_pr_checkbox mt-1" type="checkbox" value="" id="__7">
+                    <label class="form-check-label" for="__7">
+                        <%= __('Saturday')%>
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input fl_pr_checkbox mt-1" type="checkbox" value="" id="__1">
+                    <label class="form-check-label" for="__1">
+                        <%= __('Sunday')%>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" onclick="save_setting_flowrate_pressure()"><%= __('Save')%></button>
+    </div>
+<% }else{ %>
+    <div style="min-height: 500px;">
+        <div class="row">
+            <div class="col-6">
+                <table class="table table-bordered .table-responsive" id="flowRate_setting_table">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th><%= __('Start')%> [HH:mm (Giờ:phút)]</th>
+                            <th><%= __('End')%> [HH:mm (Giờ:phút)]</th>
+                            <th><%= __('Flow rate low threshold')%> (m3/h)</th>
+                            <th><%= __('Flow rate high threshold')%> (m3/h)</th>
+                        </tr>
+                        <tbody id="flowRate_table_data">
+                            <tr>
+                                <td id="plr_alcf_id_1">1</td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="plr_alcf_str_1" disabled></td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="plr_alcf_end_1" disabled></td>
+                                <td><input type="number" class="form-control" id="plr_alcf_low_1" disabled></td>
+                                <td><input type="number" class="form-control" id="plr_alcf_high_1" disabled></td>
+                            </tr>
+                            <tr>
+                                <td id="plr_alcf_id_2">2</td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="plr_alcf_str_2" disabled></td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="plr_alcf_end_2" disabled></td>
+                                <td><input type="number" class="form-control" id="plr_alcf_low_2" disabled></td>
+                                <td><input type="number" class="form-control" id="plr_alcf_high_2" disabled></td>
+                            </tr>
+                            <tr>
+                                <td id="plr_alcf_id_3">3</td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="plr_alcf_str_3" disabled></td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="plr_alcf_end_3" disabled></td>
+                                <td><input type="number" class="form-control" id="plr_alcf_low_3" disabled></td>
+                                <td><input type="number" class="form-control" id="plr_alcf_high_3" disabled></td>
+                            </tr>
+                            <tr>
+                                <td id="plr_alcf_id_4">4</td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="plr_alcf_str_4" disabled></td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="plr_alcf_end_4" disabled></td>
+                                <td><input type="number" class="form-control" id="plr_alcf_low_4" disabled></td>
+                                <td><input type="number" class="form-control" id="plr_alcf_high_4" disabled></td>
+                            </tr>
+                            <tr>
+                                <td id="plr_alcf_id_5">5</td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="plr_alcf_str_5" disabled></td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="plr_alcf_end_5" disabled></td>
+                                <td><input type="number" class="form-control" id="plr_alcf_low_5" disabled></td>
+                                <td><input type="number" class="form-control" id="plr_alcf_high_5" disabled></td>
+                            </tr>
+                            <tr>
+                                <td id="plr_alcf_id_6">6</td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="plr_alcf_str_6" disabled></td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="plr_alcf_end_6" disabled></td>
+                                <td><input type="number" class="form-control" id="plr_alcf_low_6" disabled></td>
+                                <td><input type="number" class="form-control" id="plr_alcf_high_6" disabled></td>
+                            </tr>
+                        </tbody>
+                    </thead>
+                </table>
+            </div>
+            <div class="col-6">
+                <table class="table table-bordered .table-responsive">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th><%= __('Start')%> [HH:mm (Giờ:phút)]</th>
+                            <th><%= __('End')%> [HH:mm (Giờ:phút)]</th>
+                            <th><%= __('Pressure low threshold')%> (Bar)</th>
+                            <th><%= __('Pressure high threshold')%> (Bar)</th>
+                        </tr>
+                        <tbody id="pressure_table_data">
+                            <tr>
+                                <td id ="press_alcf_id_1">1</td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="press_alcf_str_1" disabled></td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="press_alcf_end_1" disabled></td>
+                                <td><input type="number" class="form-control" id="press_alcf_low_1" disabled></td>
+                                <td><input type="number" class="form-control" id="press_alcf_high_1" disabled></td>
+                            </tr>
+                            <tr>
+                                <td id ="press_alcf_id_2">2</td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="press_alcf_str_2" disabled></td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="press_alcf_end_2" disabled></td>
+                                <td><input type="number" class="form-control" id="press_alcf_low_2" disabled></td>
+                                <td><input type="number" class="form-control" id="press_alcf_high_2" disabled></td>
+                            </tr>
+                            <tr>
+                                <td id ="press_alcf_id_3">3</td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="press_alcf_str_3" disabled></td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="press_alcf_end_3" disabled></td>
+                                <td><input type="number" class="form-control" id="press_alcf_low_3" disabled></td>
+                                <td><input type="number" class="form-control" id="press_alcf_high_3" disabled></td>
+                            </tr>
+                            <tr>
+                                <td id ="press_alcf_id_4">4</td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="press_alcf_str_4" disabled></td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="press_alcf_end_4" disabled></td>
+                                <td><input type="number" class="form-control" id="press_alcf_low_4" disabled></td>
+                                <td><input type="number" class="form-control" id="press_alcf_high_4" disabled></td>
+                            </tr>
+                            <tr>
+                                <td id ="press_alcf_id_5">5</td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="press_alcf_str_5" disabled></td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="press_alcf_end_5" disabled></td>
+                                <td><input type="number" class="form-control" id="press_alcf_low_5" disabled></td>
+                                <td><input type="number" class="form-control" id="press_alcf_high_5" disabled></td>
+                            </tr>
+                            <tr>
+                                <td id ="press_alcf_id_6">6</td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="press_alcf_str_6" disabled></td>
+                                <td><input type="time" class="form-control" placeholder="HH:mm (Giờ:phút)" id ="press_alcf_end_6" disabled></td>
+                                <td><input type="number" class="form-control" id="press_alcf_low_6" disabled></td>
+                                <td><input type="number" class="form-control" id="press_alcf_high_6" disabled></td>
+                            </tr>
+                        </tbody>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="row text-left mt-3 p-2">
+            <label class="labelInforTab"><%= __('Repreat')%></label>
+            <div class="text-left p-3" style="width: 100%; border: solid gray 1px;">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input fl_pr_checkbox mt-1" type="checkbox" value="" id="__2" disabled>
+                    <label class="form-check-label" for="__2">
+                      <%= __('Monday')%>
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input fl_pr_checkbox mt-1" type="checkbox" value="" id="__3" disabled>
+                    <label class="form-check-label" for="__3">
+                        <%= __('Tuesday')%>
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input fl_pr_checkbox mt-1" type="checkbox" value="" id="__4" disabled>
+                    <label class="form-check-label" for="__4">
+                        <%= __('Wednesday')%>
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input fl_pr_checkbox mt-1" type="checkbox" value="" id="__5" disabled>
+                    <label class="form-check-label" for="__5">
+                        <%= __('Thursday')%>
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input fl_pr_checkbox mt-1" type="checkbox" value="" id="__6" disabled>
+                    <label class="form-check-label" for="__6">
+                        <%= __('Friday')%>
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input fl_pr_checkbox mt-1" type="checkbox" value="" id="__7" disabled>
+                    <label class="form-check-label" for="__7">
+                        <%= __('Saturday')%>
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input fl_pr_checkbox mt-1" type="checkbox" value="" id="__1" disabled>
+                    <label class="form-check-label" for="__1">
+                        <%= __('Sunday')%>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer"></div>
+<% } %>

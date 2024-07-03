@@ -1,0 +1,54 @@
+<!-- <div>cài đặt điểm đo</div> -->
+<% if(role == "admin" || role == "admin_client"){ %>
+<div style="min-height: 500px;">
+    <div class="row mb-4">
+        <div class="col-6 text-left">
+            <label class="labelInforTab"><%= __('Multiplier')%></label>
+            <input type="number" class="form-control"  id="multiplier" autocomplete="off">
+        </div>
+        <div class="col-6 text-left">
+            <label class="labelInforTab"><%= __('First index')%></label>
+            <input type="number" class="form-control"  id="first_index"  autocomplete="off">
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-6 text-left">
+            <label class="labelInforTab"><%= __('Threshold Pin')%></label>
+            <input type="number" class="form-control"  id="threshold_pin" autocomplete="off">
+        </div>
+        <div class="col-6 text-left">
+            <label class="labelInforTab"><%= __('Threshold battery')%></label>
+            <input type="number" class="form-control"  id="threshold_battery" autocomplete="off">
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" onclick="save_setting()" ><%= __('Save')%></button>
+</div>
+<% }else{ %>
+    <div style="min-height: 500px;">
+        <div class="row mb-4">
+            <div class="col-6 text-left">
+                <label class="labelInforTab"><%= __('Multiplier')%></label>
+                <input type="number" class="form-control"  id="multiplier" autocomplete="off" disabled>
+            </div>
+            <div class="col-6 text-left">
+                <label class="labelInforTab"><%= __('First index')%></label>
+                <input type="number" class="form-control"  id="first_index"  autocomplete="off" disabled>
+            </div>
+        </div>
+    
+        <div class="row mb-4">
+            <div class="col-6 text-left">
+                <label class="labelInforTab"><%= __('Threshold Pin')%></label>
+                <input type="number" class="form-control"  id="threshold_pin" autocomplete="off" disabled>
+            </div>
+            <div class="col-6 text-left">
+                <label class="labelInforTab"><%= __('Threshold battery')%></label>
+                <input type="number" class="form-control"  id="threshold_battery" autocomplete="off" disabled>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer"></div>
+<% } %>

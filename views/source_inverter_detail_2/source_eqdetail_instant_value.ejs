@@ -1,0 +1,53 @@
+<div class="container-fluid tab-pane ">
+    <div>
+        <div class="row mb-4">
+            <div class="col-4 text-left">
+                <label class="labelInforTab"><%= __('INVERTER CODE')%></label>
+                <input type="text" class="form-control" disabled id="ins_val_idEQ_inverter" autocomplete="off">
+            </div>
+            <div class="col-4 text-left">
+                <label class="labelInforTab"><%= __('NAME METER')%></label>
+                <input type="text" class="form-control"  id="ins_val_nameEQ_inverter" disabled autocomplete="off">
+            </div>
+            <div class="col-4 text-left">
+                <label class="labelInforTab"><%= __('PRESSURE CODE')%></label>
+                <input type="text" class="form-control"  id="ins_val_pressure_code_inverter" disabled autocomplete="off">
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-4 text-left">
+                <label class="labelInforTab"><%= __('PRESSURE')%> (bar)</label>
+                <input type="text" class="form-control" disabled id="ins_val_pressure_inverter" autocomplete="off">
+            </div>
+            <div class="col-4 text-left">
+                <label class="labelInforTab"><%= __('CURRENT FREQUENCY')%> (Hz)</label>
+                <input type="text" class="form-control" disabled id="ins_val_feedback_inverter" autocomplete="off">
+            </div>
+            <div class="col-4 text-left">
+                <label class="labelInforTab"><%= __('COLLECTION FREQUENCY')%></label>
+                <input type="text" class="form-control" disabled id="ins_val_fre_inverter" autocomplete="off">
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-4 text-left">
+                <label class="labelInforTab"><%= __('LAST DATA TIME')%></label>
+                <input type="text" class="form-control" disabled id="ins_val_LDD_inverter" autocomplete="off">
+            </div>
+            <div class="col-4 text-left">
+                <label class="labelInforTab"><%= __('PIN VOLTAGE')%></label>
+                <input type="text" class="form-control" disabled id="ins_val_voltage_inverter" autocomplete="off">
+            </div>
+            <div class="col-4 text-left">
+                <label class="labelInforTab"><%= __('BATTERY VOLTAGE')%></label>
+                <input type="text" class="form-control" disabled id="ins_val_voltage_ac_quy_inverter" autocomplete="off">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" onclick="refresh_instan_val_inverter()"><%= __('Refresh')%></button>
+    </div>
+</div>
+
+
+

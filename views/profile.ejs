@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= __('Profile')%></title>
+        <!-- css -->
+        <link type="text/css" rel="stylesheet" href="/stylesheets/style.css">
+        <!-- font awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        <!-- jquery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <!-- Boostrap 4 -->
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <!-- jQuery library -->
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <!-- chartjs -->
+        <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script> -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script> -->
+        
+        <!-- zoom chartjs -->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3"></script>
+        <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.7"></script> -->
+
+        <!-- amchartjs -->
+        <!-- <script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+		<script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script> -->
+<!--         
+        <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+        <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+        <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script> -->
+        <!-- DataTable -->
+
+        <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script> -->
+        <!-- momentjs and daterangepicker -->
+        <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" /> -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+
+        <!-- <script src="./styleSource.js"></script> -->
+        <script src="/javascripts/profile.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#btn-show").click(function() {
+                    $("#div1").toggle().css("display", block)
+                });
+            });
+        </script>
+    
+        <div class="preloader">
+            <div class="lds-ripple">
+                <div class="lds-pos"></div>
+                <div class="lds-pos"></div>
+            </div>
+        </div>
+    
+        <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+            <header class="topbar" data-navbarbg="skin5" style="position: fixed; width: 100%; top: -5px;">
+                <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                    <div class="navbar-header" data-logobg="skin6">
+                        <a class="navbar-brand" href="/dashboard" style="order:2"></a>
+                        <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none" href="javascript:void(0)" style="text-decoration: none;"><i class="ti-menu ti-close"></i></a>
+                        <div class="btn-showad">
+                            <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav" id="btn-show">
+                                <span class="btn-icon-wrapper">
+                                    <i class="fa fa-ellipsis-v fa-w-6"></i>
+                                </span>
+                            </button>
+                        </div>
+                        <div id="div1">
+                            <a class="nav-link dropdown-toggle navLink" data-toggle="dropdown" href="#" id="accountName" style="position: relative; top: -14px; float: right;">
+                                <%= name %>
+                                    <i class="fas fa-sort-down"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right " style="min-height: 60px; position: absolute; right: 10px !important;">
+                                <a class="dropdown-item menuBarHover" href="/profile">
+                                    <i class="fas fa-key"></i>
+                                    <%= __('Change password')%>
+                                </a>
+                                <a class="dropdown-item menuBarHover" href="/logout">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <%= __('Logout')%>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5" style="padding-right: 20px;">
+                        <ul class="header-menu nav">
+                            <li class="nav-item">
+                                <a href="/dashboard" class="nav-link">
+                                    <i class="nav-link-icon fa fa-database"> </i>
+                                    <%= __('STATISTIC')%>
+                                </a>
+                            </li>
+                            <li class="btn-group nav-item">
+                                <a href="/source_3/all" class="nav-link active">
+                                    <i class="nav-link-icon fa fa-edit"></i>
+                                    <%= __('DATA TRACKING')%>
+                                </a>
+                            </li>
+                            <li class="dropdown nav-item">
+                                <a href="/alert" class="nav-link">
+                                    <i class="nav-link-icon fa fa-table"></i>
+                                    <%= __('ALERTS')%>
+                                </a>
+                            </li>
+                            <li class="dropdown nav-item">
+                                <a href="/report" class="nav-link">
+                                    <i class="nav-link-icon fa fa-paste"></i>
+                                    <%= __('REPORT')%>
+                                </a>
+                            </li>
+                            <% if(role == "admin" || role == "admin_client"){ %>
+                            <li class="dropdown nav-item">
+                                <a href="/admin" class="nav-link">
+                                    <i class="nav-link-icon fas fa-user"></i> 
+                                    <%= __('USER MANAGE')%>
+                                </a>
+                            </li>
+                            <% } %>
+                        </ul>
+    
+                        <ul class="navbar-nav ms-auto d-flex align-items-center">
+                            <li>
+                                <a href="/change-lang/vi" class="m-2"><span class="flag-icon flag-icon-vn "></span></a>
+                                <a href="/change-lang/en" class="m-2"><span class="flag-icon flag-icon-us "></span></a>
+                            </li>
+                            <li>
+                                <a class="nav-link dropdown-toggle navLink" data-toggle="dropdown" href="#" id="accountName">
+                                    <%= name %>
+                                    <i class="fas fa-sort-down"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right " style="min-height: 60px; position: absolute; right: 10px !important;">
+                                    <a class="dropdown-item menuBarHover" href="/profile">
+                                        <i class="fas fa-key"></i>
+                                        <%= __('Change password')%>
+                                    </a>
+                                    <a class="dropdown-item menuBarHover" href="/logout">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        <%= __('Logout')%>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <aside class="left-sidebar" data-sidebarbg="skin6" style="display: none">
+                <div class="scroll-sidebar">
+                    <nav class="sidebar-nav">
+                        <ul id="sidebarnav">
+                            <li class="sidebar-item pt-2">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/dashboard" aria-expanded="false">
+                                    <i class="fa fa-database" aria-hidden="true"></i>
+                                    <span class="hide-menu">
+                                        <%= __('STATISTIC')%>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item pt-2">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/source_3/all" aria-expanded="false">
+                                    <i class="fa fa fa-edit" aria-hidden="true"></i>
+                                    <span class="hide-menu">
+                                        <%= __('DATA TRACKING')%>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<%= __('ALERTS')%>" aria-expanded="false">
+                                    <i class="fa fa-table" aria-hidden="true"></i>
+                                    <span class="hide-menu">
+                                        <%= __('ALERTS')%>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/report" aria-expanded="false">
+                                    <i class="fa fa-paste" aria-hidden="true"></i>
+                                    <span class="hide-menu">
+                                        <%= __('REPORT')%>
+                                    </span>
+                                </a>
+                            </li>
+                            <% if(role == "admin" || role == "admin_client"){ %>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin" aria-expanded="false">
+                                    <i class="fas fa-user" aria-hidden="true"></i>
+                                    <span class="hide-menu"><%= __('USER MANAGE')%></span>
+                                </a>
+                            </li>
+                            <% } %>
+                        </ul>
+    
+                    </nav>
+                </div>
+            </aside>
+        </div>
+        <div name="contentContainer" class="container mt-3">
+            <div class="mt-5">
+                <div class="row">
+                    <!-- <div class="col-md-2 border-right">
+                        <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" src="/images/blank_avatar.jpg" width="150px"><span class="font-weight-bold">name user</span><span class="text-black-50">mail user</span><span> </span></div>
+                    </div> -->
+                    <!-- <div class="col-md-5 border-right">
+                        <div class="p-3 py-5">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="text-right">Profile Settings</h4>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" value=""></div>
+                                <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" value="" placeholder="surname"></div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-12"><label class="labels">PhoneNumber</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div>
+                                <div class="col-md-12"><label class="labels">Address</label><input type="text" class="form-control" placeholder="enter address" value=""></div>
+                                <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="enter email id" value=""></div>
+                                <div class="col-md-12"><label class="labels">Education</label><input type="text" class="form-control" placeholder="education" value=""></div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""></div>
+                                <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>
+                            </div>
+                            <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+                        </div>
+                    </div> -->
+                    <div class="col-md-5">
+                        <div class="p-3 py-5">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="text-right"><%= __('Account setting')%></h4>
+                            </div>
+                            <div class="row mt-2">
+                                <!-- <h6>Reset password</h6>
+                                <div class="mt-2 text-left">
+                                    <label class="labels" style="width: 100%;">Reset and send new password to your email</label>
+                                    <button class="btn btn-primary profile-button btn-sm" type="button" onclick="resetPass()">Reset password</button>
+                                </div>
+                            </div> -->
+                            <div class="row mt-5">
+                                <h6><%= __('Change password')%></h6>
+                                <div class="mt-4 text-left">
+                                    <label class="labelInforTab mt-3"><%= __('Current password')%></label>
+                                    <input type="password" class="form-control" name="currentPass" id="currentPass" autocomplete="off">
+                                    <label class="labelInforTab mt-3"><%= __('New password')%></label>
+                                    <input type="password" class="form-control" name="newPass" id="newPass" autocomplete="off">
+                                    <label class="labelInforTab mt-3"><%= __('Confirm new password')%></label>
+                                    <input type="password" class="form-control" name="cfNewPass" id="cfNewPass" autocomplete="off">
+                                    <button class="btn btn-primary profile-button btn-sm mt-4" type="button" onclick="changePass()"><%= __('Change password')%></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin</title>
+    <!-- css -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="/stylesheets/style.css">
+    <link type="text/css" rel="stylesheet" href="/stylesheets/admin.css">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <!-- Boostrap 4 -->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="http://malsub.github.com/jquery.form.js"></script> -->
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- chartjs -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+        integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+        crossorigin="anonymous"></script> -->
+
+    <!-- switch btn -->
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
+    <!-- DataTable -->
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+
+    <!-- font -->
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="//fonts.googleapis.com/css?family=Be+Vietnam:300,400,400i,500,700,700i|Open+Sans:300,400,400i,500,700,700i|Montserrat:300,400,400i,500,700,700i&display=swap&subset=vietnamese" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+
+            <!-- bootrap-select -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+
+
+    <script src="/javascripts/admin.js"></script>
+    <!-- Custom CSS -->
+    <link href="/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/styleMenu.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARXfYhv5T8luIKtsfhgXLTZrwrbyyAEMo&libraries=places&v=weekly&libraries=drawing"></script>
+
+</head>
+
+<body>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#btn-show").click(function() {
+                $("#div1").toggle().css("display", block)
+            });
+        });
+    </script>
+
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+        <header class="topbar" data-navbarbg="skin5" style="position: fixed; width: 100%; top: -5px;">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                <div class="navbar-header" data-logobg="skin6">
+                    <a class="navbar-brand" href="/dashboard" style="order:2"></a>
+                    <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none" href="javascript:void(0)" style="text-decoration: none;"><i class="ti-menu ti-close"></i></a>
+                    <div class="btn-showad">
+                        <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav" id="btn-show">
+                            <span class="btn-icon-wrapper">
+                                <i class="fa fa-ellipsis-v fa-w-6"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div id="div1">
+                        <a class="nav-link dropdown-toggle navLink" data-toggle="dropdown" href="#" id="accountName" style="position: relative; top: -14px; float: right;">
+                            <%= name %>
+                                <i class="fas fa-sort-down"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right " style="min-height: 60px; position: absolute; right: 10px !important;">
+                            <a class="dropdown-item menuBarHover" href="/profile">
+                                <i class="fas fa-key"></i>
+                                <%= __('Change password')%>
+                            </a>
+                            <a class="dropdown-item menuBarHover" href="/logout">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <%= __('Logout')%>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5" style="padding-right: 20px;">
+                    <ul class="header-menu nav">
+                        <!-- <li class="nav-item">
+                            <a href="/dashboard" class="nav-link">
+                                <i class="nav-link-icon fa fa-database"> </i>
+                                <%= __('STATISTIC')%>
+                            </a>
+                        </li> -->
+                        <!-- <li class="btn-group nav-item">
+                            <a href="/source/all" class="nav-link ">
+                                <i class="nav-link-icon fa fa-edit"></i>
+                                <%= __('DATA TRACKING')%>
+                            </a>
+                        </li>
+                        <li class="btn-group nav-item">
+                            <a href="/source_2/all" class="nav-link ">
+                                <i class="nav-link-icon fa fa-edit"></i>
+                                <%= __('DATA TRACKING 2')%>
+                            </a>
+                        </li> -->
+                        <li class="btn-group nav-item">
+                            <a href="/source_3/all" class="nav-link ">
+                                <i class="nav-link-icon fa fa-edit"></i>
+                                <%= __('DATA TRACKING 3')%>
+                            </a>
+                        </li>
+                        <li class="dropdown nav-item">
+                            <a href="/alert" class="nav-link">
+                                <i class="nav-link-icon fa fa-table"></i>
+                                <%= __('ALERTS')%>
+                            </a>
+                        </li>
+                        <!-- <li class="dropdown nav-item">
+                            <a href="/report" class="nav-link">
+                                <i class="nav-link-icon fa fa-paste"></i>
+                                <%= __('REPORT')%>
+                            </a>
+                        </li> -->
+                        <% if(role == "admin" || role == "admin_client"){ %>
+                        <li class="dropdown nav-item">
+                            <a href="/admin" class="nav-link active">
+                                <i class="nav-link-icon fas fa-user"></i> 
+                                <%= __('USER MANAGE')%>
+                            </a>
+                        </li>
+                        <% } %>
+                    </ul>
+
+                    <ul class="navbar-nav ms-auto d-flex align-items-center">
+                        <li>
+                            <a href="/change-lang/vi" class="m-2"><span class="flag-icon flag-icon-vn "></span></a>
+                            <a href="/change-lang/en" class="m-2"><span class="flag-icon flag-icon-us "></span></a>
+                        </li>
+                        <li>
+                            <a class="nav-link dropdown-toggle navLink" data-toggle="dropdown" href="#" id="accountName">
+                                <%= name %>
+                                <i class="fas fa-sort-down"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right " style="min-height: 60px; position: absolute; right: 10px !important;">
+                                <a class="dropdown-item menuBarHover" href="/profile">
+                                    <i class="fas fa-key"></i>
+                                    <%= __('Change password')%>
+                                </a>
+                                <a class="dropdown-item menuBarHover" href="/logout">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <%= __('Logout')%>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="left-sidebar" data-sidebarbg="skin6" style="display: none">
+            <div class="scroll-sidebar">
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <!-- <li class="sidebar-item pt-2">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/dashboard" aria-expanded="false">
+                                <i class="fa fa-database" aria-hidden="true"></i>
+                                <span class="hide-menu">
+                                    <%= __('STATISTIC')%>
+                                </span>
+                            </a>
+                        </li> -->
+                        <!-- <li class="sidebar-item pt-2">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/source/all" aria-expanded="false">
+                                <i class="fa fa fa-edit" aria-hidden="true"></i>
+                                <span class="hide-menu">
+                                    <%= __('DATA TRACKING')%>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item pt-2">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/source_2/all" aria-expanded="false">
+                                <i class="fa fa fa-edit" aria-hidden="true"></i>
+                                <span class="hide-menu">
+                                    <%= __('DATA TRACKING 2')%>
+                                </span>
+                            </a>
+                        </li> -->
+                        <li class="sidebar-item pt-2">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/source_3/all" aria-expanded="false">
+                                <i class="fa fa fa-edit" aria-hidden="true"></i>
+                                <span class="hide-menu">
+                                    <%= __('DATA TRACKING 3')%>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/alert" aria-expanded="false">
+                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <span class="hide-menu">
+                                    <%= __('ALERTS')%>
+                                </span>
+                            </a>
+                        </li>
+                        <!-- <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/report" aria-expanded="false">
+                                <i class="fa fa-paste" aria-hidden="true"></i>
+                                <span class="hide-menu">
+                                    <%= __('REPORT')%>
+                                </span>
+                            </a>
+                        </li> -->
+                        <% if(role == "admin" || role == "admin_client"){ %>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin" aria-expanded="false">
+                                <i class="fas fa-user" aria-hidden="true"></i>
+                                <span class="hide-menu"><%= __('USER MANAGE')%></span>
+                            </a>
+                        </li>
+                        <% } %>
+                    </ul>
+
+                </nav>
+            </div>
+        </aside>
+    </div>
+    <div name="contentContainer" class="container mt-5">
+        <div name="acountList" class="table-responsive mt-3 pr-3 pl-3">
+            <button class="btn btn-success float-left mt-5 mr-5 mb-4 btn-e" onclick="addAccount()"><%= __('Add account')%> | + </button>
+            <button class="btn btn-success float-left mt-5 mr-5 mb-4 btn-e" onclick="setting_unit()"><%= __('Manage meter')%></button>
+            <button class="btn btn-success float-left mt-5 mr-5 mb-4 btn-e" onclick="setting_map()"><%= __('Map setting')%></button>
+
+            <% if(role == "admin"){ %>
+                <!-- <button class="btn btn-success float-left mt-5 mr-5 mb-4 btn-e" onclick="setting_group()"><%= __('Setting group')%> | + </button> -->
+                <button class="btn btn-success float-left mt-5 mr-5 mb-4 btn-e" onclick="add_meter()"><%= __('Add meter')%> | + </button>
+                <button class="btn btn-danger float-left mt-5 mr-5 mb-4 btn-e" onclick="delete_meter()"><%= __('Delete meter')%> | - </button>
+            <% } %>
+            <!-- <button class="btn btn-success btn-sm float-right mt-5 mr-5 mb-4" onclick="settingOption()"><%= __('Setting Option')%></button> -->
+            <div class="table-responsive mt-3" style="min-height: 700px;">
+                <table id="tableAccount" class="table text-center " style="width:100%">
+                    <thead>
+                        <tr class="titleRow">
+                            <th>
+                                <%= __('Username')%>
+                            </th>
+                            <th>
+                                <%= __('Role')%>
+                            </th>
+                            <th>
+                                <%= __('Email')%>
+                            </th>
+                            <th>
+                                <%= __('Group')%>
+                            </th>
+                            <th>
+                                <%= __('Status')%>
+                            </th>
+                            <th>
+                                <%= __('Delete')%>
+                            </th>
+                            <!-- <th>
+                                <%= __('Setting account')%>
+                            </th> -->
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- <input type="checkbox"  data-toggle="toggle" data-onstyle="success" data-offstyle="danger"> -->
+
+    <!-- modal set role account and equipment -->
+    <div id="setRoleEQ" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog " role="document" style="max-width: 900px; height: 800px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 id="accountSetting"></h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link modalTab active" data-toggle="tab" data-target="#setRole">
+                                    <%= __('Decentralized meter access')%>
+                                </a>
+                            </li>
+                            <!-- <% if(role == "admin"){ %>
+                            <li class="nav-item">
+                                <a class="nav-link modalTab" data-toggle="tab" data-target="#set_tab_access">
+                                    <%= __('Decentralized tab access')%>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link modalTab" data-toggle="tab" data-target="#resetPass">
+                                    <%= __('Reset password')%>
+                                </a>
+                            </li>
+                            <% } %> -->
+                        </ul>
+                    </div>
+                    <div class="container-fluid pt-3 pb-3 tab-content">
+                        <div id="setRole" class="container-fluid tab-pane active">
+                            <span class="ml-3"><%= __('Editing those settings will change the equipments which this account can access')%></span>
+                            <div class="table-responsive mt-4" style="min-height: 500px;">
+                                <table id="tableSetRole" class="table text-center " style="width:100%">
+                                    <thead>
+                                        <tr class="titleRow">
+                                            <th><input type="checkbox" id="checkAllEQ"></th>
+                                            <th>ID &nbsp;</th>
+                                            <th>
+                                                <%= __('Name')%>
+                                            </th>
+                                            <!-- <th>Site</th> -->
+                                            <!-- <th>Source Type</th> -->
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <h6>
+                                <%= __('Selected equipment')%>
+                            </h6>
+                            <input type="text" class="form-control" disabled="disable" id="selectedEQ" style="width: 100%">
+                        </div>
+                        <!-- <% if(role == "admin"){ %>
+                            <div id="set_tab_access" class="container-fluid tab-pane">
+                                <span class="ml-3"><%= __('Editing those settings will change the data which this account can access')%></span>
+                                <div class="table-responsive mt-4" style="min-height: 500px;">
+                                    <table id="table_set_access_tab" class="table" style="width:100%">
+                                        <thead>
+                                            <tr class="titleRow text-center">
+                                                <th><%= __('index')%></th>
+                                                <th><%= __('Access tab')%></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center">1</td>
+                                                <td><%= __('Data')%></td>
+                                                <td class="text-center"><input type="checkbox" class="input_acc_tab" id="acc_tab_2"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">2</td>
+                                                <td><%= __('Visualize')%></td>
+                                                <td class="text-center"><input type="checkbox" class="input_acc_tab" id="acc_tab_3"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">3</td>
+                                                <td> <%= __('Loctation')%></td>
+                                                <td class="text-center"><input type="checkbox" class="input_acc_tab" id="acc_tab_4"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">4</td>
+                                                <td> <%= __('Warning')%></td>
+                                                <td class="text-center"><input type="checkbox" class="input_acc_tab" id="acc_tab_5"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">5</td>
+                                                <td><%= __('Infomation')%></td>
+                                                <td class="text-center"><input type="checkbox" class="input_acc_tab" id="acc_tab_6"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">6</td>
+                                                <td><%= __('Setting humidity and temperature 1')%></td>
+                                                <td class="text-center"><input type="checkbox" class="input_acc_tab" id="acc_tab_7"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">7</td>
+                                                <td> <%= __('Setting humidity and temperature 2')%></td>
+                                                <td class="text-center"><input type="checkbox" class="input_acc_tab" id="acc_tab_8"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">8</td>
+                                                <td><%= __('Setting voltage and amperage')%></td>
+                                                <td class="text-center"><input type="checkbox" class="input_acc_tab" id="acc_tab_9"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-success" onclick="save_setting_access_tab()" ><%= __('Save')%></button>
+                                </div>
+                            </div>
+                            <div id="resetPass" class="container-fluid tab-pane">
+                                <div class="container rounded bg-white mt-2 mb-5">
+                                    <div class="row">
+                                        <div class="col-md-5 border-right">
+                                            <div class="p-1 py-1 float-left">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <h4 class="text-right">
+                                                        <%= __('Profile')%>
+                                                    </h4>
+                                                </div>
+                                                <div class="row mt-3">
+                                                    <div class="col-md-12"><label class="labels"><%= __('User name')%></label><input type="text" class="form-control" value="" disabled id="userNameEdit"></div>
+                                                    <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" value="" disabled id="mailEdit"></div>
+                                                </div>
+                                                <div class="mt-5 text-left">
+                                                    <label class="labels"><%= __('Reset and send new password to above email')%></label>
+                                                    <button class="btn btn-primary profile-button btn-sm" type="button" onclick="resetPass()"><%= __('Reset password')%></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!--Modal add Meter-->
+        <div id="add_meter" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog" role="document" style="max-width: 60%; min-height: 600px;">
+                <div class="modal-content pt-2">
+                    <div class="modal-header">
+                        <strong class="ml-1 text-xl-left" > <%= __('ADD METER')%></strong>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body container-fluid">
+                        <div class="mt-3" style="min-height: 300px;">
+                            <div class="row mb-4">
+                                <div class="col-4 text-left">
+                                    <label class="labelInforTab"><%= __('METER CODE')%></label>
+                                    <input type="text" class="form-control" id="meter_code" autocomplete="off" style="text-align:right;">
+                                </div>
+                                <div class="col-4 text-left">
+                                    <label class="labelInforTab"><%= __('SERIAL SENSOR')%></label>
+                                    <input type="text" class="form-control" id="serial_sensor"  autocomplete="off" style="text-align:right;">
+                                </div>
+                                <div class="col-4 text-left">
+                                    <label class="labelInforTab"><%= __('NAME')%></label>
+                                    <input type="text" class="form-control" id="nameEQ" autocomplete="off" style="text-align:right;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-success float-right" onclick="submit_add_meter()"><%= __('Submit')%></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Modal delete Meter-->
+        <div id="delete_meter" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog" role="document" style="max-width: 50%; min-height: 300px;">
+                <div class="modal-content pt-2">
+                    <div class="modal-header">
+                        <strong class="ml-1 text-xl-left" > <%= __('DELETE METER')%></strong>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body container-fluid">
+                        <div class="mt-3 row">
+                            <div class="col-8">                            
+                                <select class="selectpicker form-control border" data-live-search="true" id="delete_meter_select" data-size="4" data-none-selected-text="Không có giá trị nào được chọn" data-none-results-text="Không có kết quả phù hợp">
+
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-success float-right" onclick="submit_delete_meter()"><%= __('Submit')%></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="delete_meter_notify" class="modal fade" tabindex="2" role="dialog" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog modal-sm modal-dialog-centered" role="document" style="max-width: 400px; min-height: 300px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body container-fluid" style="text-align: center;">
+                        <div class="mt-1 row">
+                            <div class="col text-center">
+                                <p><%= __('Are you sure want to delete this meter with its data ?')%></p>
+                            </div>
+                        </div>
+                        <div class="mt-2 row">
+                            <div class="col text-center">
+                                <button class="btn btn-success mr-4" onclick="accept_delete_meter()"><%= __('Yes')%></button>
+                                <button class="btn btn-danger ml-4" data-dismiss="modal" aria-label="Close"><%= __('Cancle')%></button>  
+                            </div>
+          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <!--Modal add account-->
+    <div id="addAcountModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+        <div class=" modal-dialog" id="addNewAc" role="document">
+            <div class="modal-content pt-2">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <%= __('ADD ACCOUNT')%>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="alert alert-danger" role="alert" id="alert_message" style="display: none; color: red;">
+
+                </div>
+                <div class="modal-body container-fluid">
+                    <div class="row mt-3 mr-3 ml-3 text-left">
+                        <label style="width:100%; font-weight: 700;"><%= __('Username')%>:</label>
+                        <input type="text" class="form-control form-control-sm" placeholder="<%= __('Username...')%>" name="username" id="username" style="width: 70%" autocomplete="off">
+                    </div>
+                    <div class="row mt-3 mr-3 ml-3 text-left">
+                        <label style="width:100%; font-weight: 700;">Email:</label>
+                        <input type="text" class="form-control form-control-sm" placeholder="Email..." name="email" id="email" style="width: 70%" autocomplete="off">
+                    </div>
+                    <div class="row mt-3 mr-3 ml-3 text-left">
+                        <label style="width:100%; font-weight: 700;"><%= __('Role')%>:</label>
+                        <% if(role == "admin"){ %>
+                            <div class="col-4 mt-2">
+                                <input class="role_acc" type="radio" name="role" value="admin" id="roleAdmin"><label for="roleAdmin" class="ml-2 ">Admin</label>
+                            </div>
+                        <% } %>
+
+                        <div class="col-4 mt-2">
+                            <input class="role_acc" type="radio" name="role" value="admin_client" id="roleAdminClient"><label for="roleAdminClient" class="ml-2 ">Admin client</label>
+                        </div>
+                        <div class="col-4 mt-2">
+                            <input class="role_acc" type="radio" name="role" value="sub" id="roleSubcriber"><label for="roleSubcriber" class="ml-2 ">Subcriber</label>
+                        </div>
+                    </div>
+                    <% if(role == "admin"){ %>
+                    <div class="row mt-3 mr-3 ml-3 text-left" style="display: none;" id="select_group_sesign_container">
+                        <label style="width:100%; font-weight: 700;"><%= __('Group')%>:</label>
+                        <select class="form-control" id="select_group_resign">
+
+                        </select>
+                    </div>
+                    <% } %>
+                    <div class="row mt-1 mr-3 ml-3 text-left">
+                        <label style="width:100%; font-weight: 700;"><%= __('Password')%>:</label>
+                        <input type="password" class="form-control form-control-sm" placeholder="<%= __('Password...')%>" name="password" id="pwd" style="width: 70%" autocomplete="off" id="pw">
+                    </div>
+                    <div class="row mt-3 mb-3 mr-3 ml-3 text-left">
+                        <label style="width:100%; font-weight: 700;"><%= __('Confirm Password')%>:</label>
+                        <input type="password" class="form-control form-control-sm" placeholder="<%= __('Confirm password...')%>" style="width: 70%" autocomplete="off" id="cfpwd">
+                        <span id='message' class="mt-2 ml-2"></span>
+                    </div>
+                    <!-- <input type="submit" value="Register" class="btn float-right login_btn" id="addAcBtn"> -->
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success float-right login_btn" onclick="resign()" id="addAcBtn"><%= __('Register')%></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal setting group -->
+<div id="setting_group" class="modal fade" style="z-index: 2000 !important;" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog " role="document" style="max-width: 1000px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>
+                    <strong><%= __('Settings group')%></strong>
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body container-fluid">
+                    <div class="row">
+                        <div class="col-7">
+                            <div class="row"><h4><%= __('Group list')%></h4></div>
+                            <div class="table-responsive" style="width: 100%;">
+                                <table id="group_setting_table" class="table table-border text-center" style="width: 100%;">
+                                    <thead>
+                                        <tr class="titleRow">
+                                            <th><%= __('Index')%></th>
+                                            <th><%= __('Name')%></th>
+                                            <th><%= __('Edit')%></th>
+                                            <th><%= __('Delete')%></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="body_group_setting_table"></tbody>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-success" onclick="save_setting_group()">
+                                    <%= __('Save')%>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="row"><h4><%= __('Add group')%></h4></div>
+                            <div class="row ml-1 mt-2">
+                                <input type="text" class="form-control" id="add_group" style="width: 70%">
+                                <button class="btn btn-success ml-3" onclick="add_group()"><%= __('Add')%></button>
+                            </div>
+                        </div>
+                    </div>
+            
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!--Modal setting sub group -->
+    <div id="setting_sub_group" class="modal fade" style="z-index: 2001 !important;" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog " role="document" style="max-width: 1000px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>
+                        <strong><%= __('Settings sub group')%></strong>
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body container-fluid">
+                        <div class="row">
+                            <div class="col-7">
+                                <div class="row"><h4><%= __('Sub group list')%></h4></div>
+                                <div class="table-responsive" style="width: 100%;">
+                                    <table id="sub_group_setting_table" class="table table-border text-center" style="width: 100%;">
+                                        <thead>
+                                            <tr class="titleRow">
+                                                <th><%= __('Index')%></th>
+                                                <th><%= __('Name')%></th>
+                                                <th><%= __('Edit')%></th>
+                                                <th><%= __('Delete')%></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="body_sub_group_setting_table"></tbody>
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-success" onclick="save_setting_sub_group()">
+                                        <%= __('Save')%>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div class="row"><h4><%= __('Add sub group')%></h4></div>
+                                <div class="row ml-1 mt-2">
+                                    <input type="text" class="form-control" id="add_sub_group" style="width: 70%">
+                                    <button class="btn btn-success ml-3" onclick="add_sub_group()"><%= __('Add')%></button>
+                                </div>
+                                <div class="row ml-1 mt-2">
+                                    <span>Thiết bị cha:</span>
+                                    <select class="form-control" id="father_add_sub_group">
+
+                                    </select>
+                                </div>
+                                <!-- <div class="row ml-1 mt-2">
+                                    <span>Thiết bị con:</span>
+                                    <select class="form-control" id="son_add_sub_group">
+
+                                    </select>
+                                </div> -->
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<div id="setting_unit_modal" class="modal fade" tabindex="-1" role="modal" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog " role="document" style="max-width: 90%; height: 800px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 id="unit_setting_header"><%= __('Setting group and sub group')%></h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid pt-3 pb-3 tab-content">
+                    <div id="set_unit" class="container-fluid">
+                        <div class="row" style="width: 100%;" name="filter_container">
+                            <div class="col-5">
+                                <div class="row">
+                                    <span class="ml-3" id="instruction"><%= __('Editing those settings will change the equipments which this account can access')%></span>
+                                </div>
+                            </div>
+                            <div class="col-1"></div>
+                            <div class="col-3">
+                                <% if(role == "admin"){ %>
+                                <div class="row">
+                                    <button class="btn btn-danger mr-2" onclick="setting_group()" >ĐƠN VỊ:</button>
+                                    <select class="form-control" id="filter_group" style="float: right; width: 60%;">
+                                        <option value="all" selected>
+                                            <%= __('ALL')%>
+                                        </option>
+                                        <i class="fas fa-sort-down"></i>
+                                    </select>
+                                </div>
+                                <% }else if(role == "admin_client"){ %>
+                                    <div class="row">
+                                        <label class="mr-2 mt-2" style="font-weight: bold;">
+                                            <%= __('GROUP')%>:
+                                        </label>
+                                        <input type="text" class="form-control" id="filter_group" value="<%=group_name%>" readonly="true" style="float: right; width: 60%;">
+                                    </div>
+                                <% } %>
+                            </div>
+                            <div class="col-3">
+                                <div class="row">
+                                    <% if(role == "admin"){ %>
+                                    <button id="setting_sub_group_btn" class="btn btn-danger mr-2" onclick="setting_sub_group()" disabled>NHÓM:</button>
+                                    <% }else if(role == "admin_client"){ %>
+                                        <button id="setting_sub_group_btn" class="btn btn-danger mr-2" onclick="setting_sub_group()">NHÓM:</button>
+                                    <% } %>
+                                    <select class="form-control" id="filter_sub_group" style="float: right; width: 60%;">
+                                        <option value="all" selected>
+                                            <%= __('ALL')%>
+                                        </option>
+                                        <i class="fas fa-sort-down"></i>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive mt-4" style="min-height: 500px;">
+                            <table id="table_set_unit" class="table text-center " style="width:100%">
+                                <thead>
+                                    <tr class="titleRow">
+                                        <th style="width: 8%;"></th>
+                                        <th><%= __('Meter ID')%></th>
+                                        <th><%= __('Name')%></th>
+                                        <!-- <th><%= __('Sub group')%></th> -->
+                                        <th><%= __('Branch/Total')%></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="draw_map_setting" class="modal fade" tabindex="-1" role="modal" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog " role="document" style="max-width: 90%; height: 800px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5><strong><%= __('Setting draw map')%></strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid pt-3 pb-3 tab-content">
+                    <div class="row mb-3">
+                        <div class="col-auto">
+                            <div class="row mb-3">
+                                <button id="clear_setmap_btn" class="btn btn-danger mr-2" onclick="clear_setmap_line()"><i class="fas fa-trash-alt"></i></button>
+                                <button id="reload_setmap_btn" class="btn btn-danger mr-2" onclick="reload_setmap()"><i class="fas fa-sync-alt"></i></button>
+                                <button id="auto_draw_zone_btn" class="btn btn-danger mr-2" onclick="auto_draw_zone()"><i class="fas fa-paint-brush"></i></button>
+                                <button id="save_setmap_btn" class="btn btn-success" onclick="save_setmap()"><%= __('Save')%></button>
+                            </div>
+                            <% if(role == "admin"){ %>
+                                <div class="row mb-3">
+                                    <label class="mr-2 mt-2" style="font-weight: bold;">
+                                        <%= __('GROUP')%>:
+                                    </label>
+                                    <select class="form-control" id="filter_group_setmap" style="float: right; width: 60%;">
+                                        <option value="all" selected>
+                                            CHƯA CHỌN
+                                        </option>
+                                        <i class="fas fa-sort-down"></i>
+                                    </select>
+                                </div>
+                            <% }else if(role == "admin_client"){ %>
+                                <div class="row mb-3">
+                                    <label class="mr-2 mt-2" style="font-weight: bold;">
+                                        <%= __('GROUP')%>:
+                                    </label>
+                                    <input type="text" class="form-control" value="<%=group_name%>" disabled style="float: right; width: 60%;">
+                                </div>
+                            <% } %>
+                            <div class="row mb-3">
+                                <label class="mr-2 mt-2" style="font-weight: bold;">
+                                    <%= __('SUB GROUP')%>:
+                                </label>                                    
+                                <select class="form-control" id="filter_sub_setmap" style="float: right; width: 60%;">
+                                    <option value="all" selected>
+                                        CHƯA CHỌN
+                                    </option>
+                                    <i class="fas fa-sort-down"></i>
+                                </select>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="mr-2 mt-2" style="font-weight: bold;">
+                                    <%= __('TYPE')%>:
+                                </label>                                    
+                                <select class="form-control" id="type_setmap" style="float: right; width: 60%;">
+                                    <option value="line" selected>Vẽ đường</option>
+                                    <option value="zone">Vẽ vùng</option>
+                                </select>
+                            </div>
+                            <!-- <div class="row mb-3">
+                                <label class="mr-2 mt-2" style="font-weight: bold;">
+                                    <%= __('NAME')%>:
+                                </label>                                    
+                                <select class="form-control" id="name_line" style="float: right; width: 60%;"></select>
+                            </div>
+                            <div class="row mb-3">
+                                <input type="text" class="form-control" placeholder="Sửa tên" style="float: right; width: 100%;">
+                            </div> -->
+                        </div>
+                        <div class="col">
+                            <div id="setmap" class="mt-3" style="width:100%; min-height:750px;"></div>
+                        </div>
+                    </div>
+                    <!-- <div id="set_unit" class="container-fluid">
+                        <div class="row" style="width: 100%;" name="filter_container">
+                            <div class="col-3">
+                                <input class="type_setmap" type="radio" name="type_setmap" value="line" id="draw_map" checked>
+                                <label for="draw_map" class="ml-2 ">Vẽ đường</label>
+                            </div>
+                            <div class="col-3">
+                                <input class="type_setmap" type="radio" name="type_setmap" value="zone" id="zone_map">
+                                <label for="zone_map" class="ml-2 ">Vẽ vùng</label>
+                            </div>
+                            <div class="col-3">
+                                <% if(role == "admin"){ %>
+                                    <div class="row">
+                                        <label class="mr-2 mt-2" style="font-weight: bold;">
+                                            <%= __('GROUP')%>:
+                                        </label>
+                                        <select class="form-control" id="filter_group_setmap" style="float: right; width: 60%;">
+                                            <option value="all" selected>
+                                                CHƯA CHỌN
+                                            </option>
+                                            <i class="fas fa-sort-down"></i>
+                                        </select>
+                                    </div>
+                                <% }else if(role == "admin_client"){ %>
+                                    <div class="row">
+                                        <label class="mr-2 mt-2" style="font-weight: bold;">
+                                            <%= __('GROUP')%>:
+                                        </label>
+                                        <input type="text" class="form-control" value="<%=group_name%>" disabled style="float: right; width: 60%;">
+                                    </div>
+                                <% } %>
+                            </div>
+                            <div class="col-3">
+                                <div class="row">
+                                    <label class="mr-2 mt-2" style="font-weight: bold;">
+                                        <%= __('SUB GROUP')%>:
+                                    </label>                                    
+                                    <select class="form-control" id="filter_sub_setmap" style="float: right; width: 60%;">
+                                        <option value="all" selected>
+                                            CHƯA CHỌN
+                                        </option>
+                                        <i class="fas fa-sort-down"></i>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-fluid mt-2">
+                            <button id="clear_setmap_btn" class="btn btn-danger mr-2" onclick="clear_setmap_line()"><i class="fas fa-trash-alt"></i></button>
+                            <button id="reload_setmap_btn" class="btn btn-danger mr-2" onclick="reload_setmap()"><i class="fas fa-sync-alt"></i></button>
+                            <button id="auto_draw_zone_btn" class="btn btn-danger mr-2" onclick="auto_draw_zone()"><i class="fas fa-paint-brush"></i></button>
+
+                           
+                            <div id="setmap" class="mt-3" style="width:100%; height:750px;">Chưa chọn nhóm thiết bị!</div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="/js/custom.js"></script>
+    <!--This page JavaScript -->
+    <!-- <script src="/js/pages/dashboards/dashboard1.js"></script> -->
+</body>
+
+</html>
